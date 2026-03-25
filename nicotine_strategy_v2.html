@@ -240,6 +240,168 @@ body { font-family: var(--font); background: var(--white); color: var(--black); 
   backdrop-filter: blur(8px);
 }
 
+/* ── MINIMAL VISUAL SCENES ── */
+.visual-scene { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.visual-scene::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.28;
+}
+.visual-glow { position: absolute; border-radius: 50%; filter: blur(40px); opacity: 0.55; }
+.visual-pill {
+  display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+  padding: 10px 16px; font-size: 12px; font-weight: 700; letter-spacing: 1.6px;
+  text-transform: uppercase; backdrop-filter: blur(10px);
+}
+.market-scene { background: linear-gradient(180deg, #101820 0%, #151b22 55%, #0c0c0c 100%); }
+.market-orb-1 { width: 220px; height: 220px; background: rgba(67,97,238,0.28); top: 48px; left: 9%; }
+.market-orb-2 { width: 160px; height: 160px; background: rgba(237,217,76,0.18); bottom: 54px; right: 13%; }
+.market-header {
+  position: absolute; top: 52px; left: 60px; right: 60px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; z-index: 2;
+}
+.market-copy {
+  max-width: 560px; position: absolute; left: 60px; bottom: 92px; z-index: 2;
+}
+.market-kicker {
+  font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.42); margin-bottom: 18px; font-weight: 700;
+}
+.market-copy h3 {
+  font-size: clamp(34px, 5vw, 78px); line-height: 0.95;
+  letter-spacing: -3px; color: #fff; font-weight: 900;
+}
+.market-copy p {
+  margin-top: 20px; max-width: 430px; font-size: 15px; line-height: 1.8;
+  color: rgba(255,255,255,0.58);
+}
+.market-copy strong { color: var(--yellow); }
+.cityline {
+  position: absolute; left: 55%; right: 60px; bottom: 0; height: 260px;
+  display: flex; align-items: flex-end; gap: 10px;
+}
+.cityline span {
+  flex: 1; border-radius: 10px 10px 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.34), rgba(255,255,255,0.09));
+  border: 1px solid rgba(255,255,255,0.09);
+}
+.cityline span:nth-child(1) { height: 38%; }
+.cityline span:nth-child(2) { height: 56%; }
+.cityline span:nth-child(3) { height: 47%; }
+.cityline span:nth-child(4) { height: 72%; }
+.cityline span:nth-child(5) { height: 60%; }
+.cityline span:nth-child(6) { height: 86%; }
+.cityline span:nth-child(7) { height: 68%; }
+.cityline span:nth-child(8) { height: 42%; }
+.moat-scene { background: linear-gradient(180deg, #0d0f13 0%, #11151b 100%); }
+.moat-orb-1 { width: 200px; height: 200px; background: rgba(181,217,156,0.22); top: 70px; left: 7%; }
+.moat-orb-2 { width: 180px; height: 180px; background: rgba(67,97,238,0.18); bottom: 60px; right: 8%; }
+.route-wrap {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  gap: 26px; padding: 0 80px; z-index: 2;
+}
+.route-node {
+  width: 240px; min-height: 150px; border-radius: 28px; padding: 26px 24px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+}
+.route-node .eyebrow {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.34); margin-bottom: 18px;
+}
+.route-node .value { font-size: 34px; font-weight: 900; letter-spacing: -1px; color: #fff; }
+.route-node .desc {
+  margin-top: 10px; font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.56);
+}
+.route-arrow {
+  width: 70px; height: 2px; background: rgba(255,255,255,0.22); position: relative; flex: 0 0 auto;
+}
+.route-arrow::after {
+  content: ''; position: absolute; right: -2px; top: -4px; width: 10px; height: 10px;
+  border-top: 2px solid rgba(255,255,255,0.3); border-right: 2px solid rgba(255,255,255,0.3);
+  transform: rotate(45deg);
+}
+.strategy-panel {
+  width: 100%; height: 100%; position: relative; overflow: hidden;
+  background: linear-gradient(180deg, #f6f2eb 0%, #ece5da 100%);
+}
+.strategy-panel.dark { background: linear-gradient(180deg, #14171c 0%, #0d0f13 100%); }
+.strategy-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
+  background-size: 36px 36px;
+  opacity: 0.55;
+}
+.strategy-panel.dark .strategy-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+}
+.phone-card {
+  position: absolute; left: 46px; top: 46px; width: 170px; height: 308px;
+  background: #111; border-radius: 34px; padding: 14px; box-shadow: 0 24px 48px rgba(0,0,0,0.16);
+}
+.phone-screen {
+  width: 100%; height: 100%; border-radius: 24px;
+  background: linear-gradient(180deg, #1a1f27 0%, #0f1318 100%);
+  position: relative; overflow: hidden;
+}
+.screen-bar { position: absolute; left: 18px; height: 10px; border-radius: 10px; background: rgba(255,255,255,0.1); }
+.screen-bar.one { top: 34px; width: 64%; }
+.screen-bar.two { top: 58px; width: 46%; }
+.screen-card {
+  position: absolute; left: 18px; right: 18px; top: 102px; height: 82px;
+  border-radius: 18px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.06);
+}
+.screen-pill {
+  position: absolute; left: 18px; bottom: 26px; border-radius: 999px;
+  padding: 12px 16px; font-size: 11px; font-weight: 800; letter-spacing: 1.4px;
+  text-transform: uppercase; color: #111; background: var(--yellow);
+}
+.tin-pack {
+  position: absolute; right: 52px; bottom: 52px; width: 168px; height: 108px;
+  border-radius: 28px; background: #fff; border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 28px 40px rgba(0,0,0,0.12);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+}
+.tin-pack::before {
+  content: ''; width: 62px; height: 62px; border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.16); margin-bottom: 10px;
+}
+.tin-pack span {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(0,0,0,0.45); font-weight: 800;
+}
+.community-core {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 116px; height: 116px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(237,217,76,0.95), rgba(237,217,76,0.18));
+  box-shadow: 0 0 0 24px rgba(255,255,255,0.03), 0 0 0 48px rgba(255,255,255,0.02);
+}
+.community-node {
+  position: absolute; width: 92px; height: 92px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+}
+.community-node::before {
+  content: ''; width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.32);
+}
+.community-node.a { top: 56px; left: 62px; }
+.community-node.b { top: 82px; right: 72px; }
+.community-node.c { bottom: 56px; left: 96px; }
+.community-node.d { bottom: 74px; right: 88px; }
+.community-line { position: absolute; height: 1px; background: rgba(255,255,255,0.14); transform-origin: left center; }
+.community-label {
+  position: absolute; left: 28px; bottom: 26px;
+  font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+}
+.strategy-panel.dark .community-label { color: rgba(255,255,255,0.82); }
+
 /* ── STAT BUBBLE ── */
 .bubbles-section {
   display: flex; gap: 40px; align-items: center;
@@ -492,6 +654,24 @@ body { font-family: var(--font); background: var(--white); color: var(--black); 
   .bubbles-section { justify-content: center; }
   .verify-item { grid-template-columns: 40px 1fr; }
   .verify-verdict-pill { display: none; }
+  .img-section { height: 380px; }
+  .img-caption { left: 24px; right: 24px; bottom: 24px; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .market-header { left: 24px; right: 24px; top: 28px; flex-direction: column; align-items: flex-start; }
+  .market-copy { left: 24px; right: 24px; bottom: 34px; max-width: none; }
+  .market-copy h3 { font-size: 42px; }
+  .market-copy p { max-width: 100%; font-size: 14px; }
+  .cityline { left: 24px; right: 24px; height: 160px; opacity: 0.45; }
+  .route-wrap { flex-direction: column; gap: 16px; padding: 34px 24px; justify-content: center; }
+  .route-node { width: 100%; min-height: auto; padding: 20px; }
+  .route-arrow { width: 2px; height: 22px; }
+  .route-arrow::after { right: -4px; top: 12px; transform: rotate(135deg); }
+  .phone-card { left: 24px; top: 24px; width: 138px; height: 252px; }
+  .tin-pack { right: 24px; bottom: 24px; width: 132px; height: 90px; border-radius: 24px; }
+  .community-node { width: 72px; height: 72px; }
+  .community-node.a { top: 34px; left: 24px; }
+  .community-node.b { top: 56px; right: 24px; }
+  .community-node.c { bottom: 44px; left: 46px; }
+  .community-node.d { bottom: 54px; right: 34px; }
 }
 </style>
 </head>
@@ -622,11 +802,25 @@ body { font-family: var(--font); background: var(--white); color: var(--black); 
 
 <!-- MARKET PHOTO -->
 <div class="img-section">
-  <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1600&q=80" alt="Seoul Korea" loading="lazy">
-  <div class="img-overlay"></div>
+  <div class="visual-scene market-scene">
+    <div class="visual-glow market-orb-1"></div>
+    <div class="visual-glow market-orb-2"></div>
+    <div class="market-header">
+      <span class="visual-pill" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.08);">Seoul · Rule Shift</span>
+      <span class="visual-pill" style="background:rgba(237,217,76,0.12);color:var(--yellow);border:1px solid rgba(237,217,76,0.2);">2026.04.24</span>
+    </div>
+    <div class="market-copy">
+      <div class="market-kicker">Market context / Korea</div>
+      <h3>REGULATION<br>RESETS<br>THE BOARD.</h3>
+      <p>서울의 수요보다 중요한 건 <strong>새로운 룰</strong>이다. 시장 이미지는 도시 전경보다, 규제 변화와 유통 판 재편을 직접 보여주는 편이 더 맞다.</p>
+    </div>
+    <div class="cityline" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
   <div class="img-caption">
-    <span class="img-caption-text">Seoul, Korea · 2026</span>
-    <span class="img-caption-text">규제 변화의 진원지</span>
+    <span class="img-caption-text">Korea · Regulatory Reset</span>
+    <span class="img-caption-text">도시보다 룰의 변화에 초점</span>
   </div>
 </div>
 
@@ -714,11 +908,32 @@ body { font-family: var(--font); background: var(--white); color: var(--black); 
 
 <!-- MOAT PHOTO -->
 <div class="img-section">
-  <img src="https://images.unsplash.com/photo-1529313780224-1a12b68bed16?auto=format&fit=crop&w=1600&q=80" alt="European Factory" loading="lazy">
-  <div class="img-overlay"></div>
+  <div class="visual-scene moat-scene">
+    <div class="visual-glow moat-orb-1"></div>
+    <div class="visual-glow moat-orb-2"></div>
+    <div class="route-wrap">
+      <div class="route-node">
+        <div class="eyebrow">Europe</div>
+        <div class="value">Factory</div>
+        <div class="desc">안정적 생산 파트너와 가격 조건을 먼저 확보한 상태</div>
+      </div>
+      <div class="route-arrow"></div>
+      <div class="route-node">
+        <div class="eyebrow">Import / Customs</div>
+        <div class="value">Know-how</div>
+        <div class="desc">담배 카테고리 통관 경험은 규제 편입 이후 더 큰 차이를 만든다</div>
+      </div>
+      <div class="route-arrow"></div>
+      <div class="route-node">
+        <div class="eyebrow">Retail Access</div>
+        <div class="value">Moat</div>
+        <div class="desc">공급망 + 제도 대응이 결합될 때 인디 브랜드의 실질 해자가 된다</div>
+      </div>
+    </div>
+  </div>
   <div class="img-caption">
-    <span class="img-caption-text">Europe · Manufacturing</span>
-    <span class="img-caption-text">2030년까지 생산 물량 선점</span>
+    <span class="img-caption-text">Supply Chain · Europe to Korea</span>
+    <span class="img-caption-text">범용 공장 사진 대신 공급 해자를 직접 표현</span>
   </div>
 </div>
 
@@ -897,13 +1112,34 @@ body { font-family: var(--font); background: var(--white); color: var(--black); 
 <!-- STRATEGY PHOTO -->
 <div class="photo-grid">
   <div class="photo-cell">
-    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Premium retail" loading="lazy">
-    <div class="photo-cell-overlay"></div>
+    <div class="strategy-panel">
+      <div class="strategy-grid"></div>
+      <div class="phone-card">
+        <div class="phone-screen">
+          <div class="screen-bar one"></div>
+          <div class="screen-bar two"></div>
+          <div class="screen-card"></div>
+          <div class="screen-pill">D2C First</div>
+        </div>
+      </div>
+      <div class="tin-pack"><span>Nicotine Pouch</span></div>
+    </div>
     <div class="photo-cell-label">D2C 채널 전략</div>
   </div>
   <div class="photo-cell">
-    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Brand building" loading="lazy">
-    <div class="photo-cell-overlay"></div>
+    <div class="strategy-panel dark">
+      <div class="strategy-grid"></div>
+      <div class="community-core"></div>
+      <div class="community-node a"></div>
+      <div class="community-node b"></div>
+      <div class="community-node c"></div>
+      <div class="community-node d"></div>
+      <div class="community-line" style="left:108px;top:103px;width:148px;transform:rotate(18deg);"></div>
+      <div class="community-line" style="left:198px;top:176px;width:118px;transform:rotate(-14deg);"></div>
+      <div class="community-line" style="left:112px;top:248px;width:150px;transform:rotate(-18deg);"></div>
+      <div class="community-line" style="left:214px;top:222px;width:106px;transform:rotate(20deg);"></div>
+      <div class="community-label">Adult Community / Trust Loop</div>
+    </div>
     <div class="photo-cell-label">브랜드 커뮤니티</div>
   </div>
 </div>
