@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한국 니코틴 파우치 시장 Deep Dive</title>
+  <style>
+    :root{
+      --bg:#f4f1ea;
+      --paper:#fffdf8;
+      --ink:#111111;
+      --muted:#6a665f;
+      --line:#d9d2c7;
+      --red:#f04d37;
+      --navy:#12213c;
+      --mint:#d9fff2;
+      --sky:#d9efff;
+      --sand:#fff0c3;
+      --green:#1e9b64;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    .wrap{max-width:1260px;margin:0 auto;padding:20px}
+    .hero{
+      background:linear-gradient(135deg,#101010 0%,#1d1e28 100%);
+      color:#fffdf7;
+      border-radius:30px;
+      padding:30px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:18px;
+      overflow:hidden;
+    }
+    .eyebrow{
+      text-transform:uppercase;
+      font-size:.76rem;
+      letter-spacing:.18em;
+      color:#c7c0b3;
+    }
+    h1{
+      font-size:clamp(3rem,7vw,6.4rem);
+      line-height:.9;
+      margin:.25em 0;
+      letter-spacing:-.06em;
+    }
+    .sub{
+      max-width:760px;
+      font-size:1.08rem;
+      color:#f5eee2;
+    }
+    .hero-stats{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      align-content:start;
+    }
+    .stat{
+      border-radius:22px;
+      padding:22px;
+      min-height:180px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .cream{background:#fff2cb;color:#101010}
+    .sky{background:#dceeff;color:#101010}
+    .mint{background:#d8ffe9;color:#101010}
+    .red{background:#ff5d45;color:#fff}
+    .stat .num{
+      font-size:3rem;
+      font-weight:900;
+      line-height:.9;
+      letter-spacing:-.05em;
+    }
+    .stat .lbl{font-weight:700}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:24px;
+      box-shadow:0 10px 30px rgba(0,0,0,.03);
+    }
+    .span-4{grid-column:span 4}
+    .span-5{grid-column:span 5}
+    .span-6{grid-column:span 6}
+    .span-7{grid-column:span 7}
+    .span-8{grid-column:span 8}
+    .span-12{grid-column:span 12}
+    .tag{
+      display:inline-block;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.8rem;
+      color:var(--muted);
+      margin-bottom:12px;
+      background:#fff;
+    }
+    h2{
+      font-size:clamp(1.8rem,3.8vw,3.6rem);
+      line-height:.95;
+      margin:0 0 14px;
+      letter-spacing:-.05em;
+    }
+    h3{
+      font-size:1.08rem;
+      margin:0 0 8px;
+    }
+    p{margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .note{
+      display:inline-block;
+      background:var(--red);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:14px;
+      font-weight:900;
+      transform:rotate(-2deg);
+    }
+    .kpi{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .kpi .box{
+      background:#f8f4eb;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+    }
+    .kpi .box strong{
+      display:block;
+      font-size:1.8rem;
+      letter-spacing:-.04em;
+      margin-bottom:6px;
+    }
+    .bar{margin:16px 0}
+    .bar-head{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:6px;
+      font-size:.95rem;
+    }
+    .track{
+      height:12px;
+      border-radius:999px;
+      background:#ece6db;
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(90deg,var(--navy),#4f79d7);
+    }
+    .fill.redline{background:linear-gradient(90deg,#ff644e,#ffad63)}
+    .fill.greenline{background:linear-gradient(90deg,#16a767,#8be3b8)}
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:.96rem;
+      margin-top:8px;
+    }
+    th,td{
+      border-bottom:1px solid var(--line);
+      padding:12px 10px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{color:var(--muted);font-size:.86rem;text-transform:uppercase;letter-spacing:.08em}
+    .diagram{
+      display:grid;
+      grid-template-columns:1fr 80px 1fr 80px 1fr;
+      gap:12px;
+      align-items:center;
+      margin-top:16px;
+    }
+    .node{
+      background:#f8f4eb;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      min-height:140px;
+    }
+    .arrow{
+      text-align:center;
+      font-size:2rem;
+      color:var(--red);
+      font-weight:900;
+    }
+    .quote{
+      font-size:2rem;
+      line-height:1.05;
+      letter-spacing:-.05em;
+      font-weight:900;
+    }
+    ul{padding-left:20px;margin:10px 0}
+    li{margin-bottom:7px}
+    .footer{
+      margin-top:18px;
+      background:#111319;
+      color:#f5efe4;
+      border-radius:28px;
+      padding:26px;
+    }
+    .sources li{color:#d7d1c6;font-size:.92rem}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}
+      .kpi{grid-template-columns:1fr 1fr}
+      .diagram{grid-template-columns:1fr}
+      .arrow{transform:rotate(90deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">consulting style rebuild · momo × vicky inputs · korea oral nicotine</div>
+        <h1>한국 니코틴<br>파우치 시장,<br>지금은 틈새.<br>하지만 무시하긴 이르다.</h1>
+        <p class="sub">
+          이번 버전은 단순 디자인 리메이크가 아니라, <strong>글로벌 시장의 실제 움직임</strong>,
+          <strong>대표 브랜드 전략</strong>, <strong>한국 규제 변수</strong>, 그리고 <strong>국내 침투 시나리오</strong>를
+          함께 엮은 심화 웹 리포트다. 예쁘기만 한 페이지가 아니라, “왜 지금 봐야 하는지”가 논리적으로 쌓이도록 다시 설계했다.
+        </p>
+        <div class="note">No smoke. Still strategy.</div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat cream">
+          <div class="eyebrow" style="color:#6d6452">global signal</div>
+          <div class="num">2025</div>
+          <div class="lbl">FDA가 ZYN 20개 제품 판매를 허가하며 카테고리 정당성이 한 단계 올라감</div>
+        </div>
+        <div class="stat sky">
+          <div class="eyebrow" style="color:#445769">bat</div>
+          <div class="num">+55%</div>
+          <div class="lbl">BAT의 Modern Oral 2024 volume growth</div>
+        </div>
+        <div class="stat mint">
+          <div class="eyebrow" style="color:#2d5e49">korea trigger</div>
+          <div class="num">2026</div>
+          <div class="lbl">합성니코틴 포함 법 정의 개정으로 국내 룰셋이 재정렬</div>
+        </div>
+        <div class="stat red">
+          <div class="eyebrow" style="color:#ffd8d2">vicky caution</div>
+          <div class="num">STOP?</div>
+          <div class="lbl">청소년 이슈 또는 편의점 차단 시 성장 자체가 급랭할 수 있음</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card span-7">
+        <div class="tag">Executive summary</div>
+        <h2>결론부터 말하면,<br>한국은 “폭발”보다 “형성” 단계다.</h2>
+        <p>
+          제 판단(Momo)은 분명하다. 한국 니코틴 파우치 시장은 단기간에 주력 카테고리로 튀기보다는,
+          <strong>규제 정리 이후 서서히 구조가 보이는 니치 시장</strong>으로 커질 가능성이 더 높다.
+          다만 글로벌 무브를 보면 무시할 단계도 아니다. PMI는 ZYN의 지리적 출시를 넓히고 있고,
+          BAT는 VELO를 통해 Modern Oral을 빠르게 키웠으며, Altria의 on!도 FDA marketing granted orders를 확보했다.
+        </p>
+        <div class="kpi">
+          <div class="box"><strong>ZYN</strong>규제 정당성·시장 확장</div>
+          <div class="box"><strong>VELO</strong>볼륨 성장·브랜드 확장</div>
+          <div class="box"><strong>on!</strong>미국 규제 승인·가격대 포지션</div>
+          <div class="box"><strong>KT&amp;G</strong>Oral Nicotine을 미래 NGP 축으로 명시</div>
+        </div>
+      </div>
+      <div class="card span-5" style="background:var(--navy);color:#fff;">
+        <div class="tag" style="background:transparent;border-color:rgba(255,255,255,.14);color:#d7dff7">one-line thesis</div>
+        <div class="quote">“한국에서 니코틴 파우치는 다음 왕좌가 아니라,<br>다음 옵션이 될 가능성이 크다.”</div>
+      </div>
+
+      <div class="card span-6">
+        <div class="tag">Global market movement</div>
+        <h2>세계 시장은 이미<br>“실험” 단계를 지나고 있다.</h2>
+        <p>
+          글로벌 니코틴 파우치 시장은 아직 전통 궐련·전자담배만큼 크지는 않지만, 중요한 건 <strong>규제·생산·브랜드 투자</strong>가 동시에 움직인다는 점이다.
+        </p>
+        <div class="bar">
+          <div class="bar-head"><span>BAT Modern Oral volume growth (2024)</span><strong>55%</strong></div>
+          <div class="track"><div class="fill redline" style="width:55%"></div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-head"><span>BAT Modern Oral revenue growth (2024)</span><strong>46.6%</strong></div>
+          <div class="track"><div class="fill" style="width:47%"></div></div>
+        </div>
+        <div class="bar">
+          <div class="bar-head"><span>U.S. total oral industry growth (Altria est., 6 months ended Mar 2025)</span><strong>10%</strong></div>
+          <div class="track"><div class="fill greenline" style="width:30%"></div></div>
+        </div>
+        <p class="muted">포인트는 절대 숫자보다도, “대형 담배사가 이걸 미래 포트폴리오로 취급하기 시작했다”는 사실이다.</p>
+      </div>
+
+      <div class="card span-6">
+        <div class="tag">Brand references</div>
+        <h2>브랜드 레퍼런스는<br>이미 분명하다.</h2>
+        <table>
+          <thead>
+            <tr><th>브랜드</th><th>포지션</th><th>시사점</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ZYN</strong></td>
+              <td>카테고리 리더 + 규제 정당성</td>
+              <td>FDA PMTA 허가와 MRTP 검토는 카테고리 legitimacy를 높이는 상징적 사건</td>
+            </tr>
+            <tr>
+              <td><strong>VELO</strong></td>
+              <td>글로벌 확장형 메가브랜드</td>
+              <td>BAT는 VELO를 Modern Oral 핵심 브랜드로 키우며 규모의 경제와 포트폴리오 확장을 보여줌</td>
+            </tr>
+            <tr>
+              <td><strong>on!</strong></td>
+              <td>미국 대중형/접근형 포지션</td>
+              <td>Altria는 oral nicotine pouch 성장의 수혜를 노리며 규제 승인까지 확보</td>
+            </tr>
+            <tr>
+              <td><strong>KT&amp;G oral nicotine</strong></td>
+              <td>한국/아시아 확장 가능성의 전조</td>
+              <td>한국 기업도 이 카테고리를 관찰이 아닌 전략 투자 대상으로 보기 시작</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card span-12">
+        <div class="tag">Logic diagram</div>
+        <h2>한국 시장은 이렇게 움직일 가능성이 높다</h2>
+        <div class="diagram">
+          <div class="node">
+            <h3>1) 글로벌 정당성 상승</h3>
+            <p>ZYN, VELO, on! 등 대형 브랜드가 규제 승인·지리 확장·브랜드 투자로 카테고리의 신뢰도를 끌어올린다.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node">
+            <h3>2) 한국 규제 리셋</h3>
+            <p>합성니코틴 포함 법 정의 개정으로 회색지대가 줄고, 불명확한 시장이 제도권 논리 안으로 들어온다.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="node">
+            <h3>3) 니치 시장 형성</h3>
+            <p>도시 직장인·복수 니코틴 사용자·은밀한 사용 선호층을 중심으로 먼저 자리 잡고, 유통이 열리면 추가 확대된다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card span-4">
+        <div class="tag">Demand side</div>
+        <h2>왜 시도할까?</h2>
+        <ul>
+          <li>연기 없음, 냄새 부담 적음</li>
+          <li>실내/이동 중 상황 적합성</li>
+          <li>새로운 니코틴 포맷에 대한 호기심</li>
+          <li>전자담배와 다른 “조용한 사용” 경험</li>
+        </ul>
+      </div>
+      <div class="card span-4">
+        <div class="tag">Barrier side</div>
+        <h2>왜 바로 커지진 않을까?</h2>
+        <ul>
+          <li>한국엔 이미 강한 HTP 대체재가 있음</li>
+          <li>입 안에 넣는 포맷이 여전히 낯섦</li>
+          <li>청소년 이슈가 터지면 역풍 가능</li>
+          <li>편의점·대형채널 입점 여부가 불확실</li>
+        </ul>
+      </div>
+      <div class="card span-4" style="background:#fef2ef">
+        <div class="tag">Consulting note</div>
+        <h2>시장의 첫 승자는<br>가장 멋진 브랜드가 아닐 수 있다.</h2>
+        <p>오히려 <strong>규제 적응 + 유통 실행 + 소비자 교육</strong>을 가장 빨리 맞춘 쪽이 초기 시장을 가져갈 가능성이 높다.</p>
+      </div>
+
+      <div class="card span-8">
+        <div class="tag">Scenarios</div>
+        <h2>세 가지 시나리오</h2>
+        <table>
+          <thead>
+            <tr><th>시나리오</th><th>핵심 전제</th><th>시장 결과</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>보수</strong></td>
+              <td>청소년 이슈 부각, 광고·유통 제한 강화, 편의점 진입 차단</td>
+              <td>매우 제한적 틈새. 회색시장 축소 후 볼륨도 줄 수 있음</td>
+            </tr>
+            <tr>
+              <td><strong>기준</strong></td>
+              <td>규제는 강화되지만 합법 유통과 브랜드 투자가 병행</td>
+              <td>도시형 니치 카테고리로 구조화, 장기적 확장 기반 형성</td>
+            </tr>
+            <tr>
+              <td><strong>공격</strong></td>
+              <td>대형 사업자 론칭 + 편의점 유통 + 젊은층 수용이 맞물림</td>
+              <td>전자담배 보완재를 넘어 새로운 무연 카테고리로 부상</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card span-4" style="background:#fff6d8">
+        <div class="tag">Momo × Vicky</div>
+        <h2>이견 표시</h2>
+        <p><strong>Momo:</strong> “규제 정비 이후 점진적 확대” 쪽에 더 무게.</p>
+        <p><strong>Vicky:</strong> 성장 속도를 더 보수적으로 봄. 특히 <strong>청소년 이슈와 편의점 유통 제한</strong>이 걸리면 시장 자체가 매우 작게 남을 수 있다고 봄.</p>
+        <p class="muted">즉, 두 시각 모두 “가능성은 있다”에 동의하지만, 속도와 폭에선 Vicky가 더 보수적이다.</p>
+      </div>
+
+      <div class="card span-12" style="background:#12213c;color:#f6f8ff;">
+        <div class="tag" style="background:transparent;border-color:rgba(255,255,255,.15);color:#d6e3ff">Final recommendation</div>
+        <h2 style="color:#fff">이 보고서의 최종 판단</h2>
+        <p>
+          한국 니코틴 파우치 시장은 2026년 기준 아직 메인스트림이 아니다. 그러나 글로벌 시장이 이미 카테고리 정당성과 생산·브랜드 투자 단계를 통과하고 있다는 점,
+          그리고 한국도 법 정의 정비로 “무시하던 제품”에서 “관리해야 하는 제품”으로 이동하고 있다는 점은 중요하다.
+        </p>
+        <p>
+          따라서 가장 합리적인 문장은 이것이다:
+          <strong>“한국 니코틴 파우치 시장은 작지만 전략적으로 봐야 하는 시장이며, 향후 2~4년은 카테고리 방향이 결정되는 형성기다.”</strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="tag" style="background:transparent;border-color:rgba(255,255,255,.14);color:#d6d2c9">Sources</div>
+      <ul class="sources">
+        <li>BAT Annual Report 2025 / VELO & Modern Oral: https://www.bat.com/content/dam/batcom/global/main-nav/investors-and-reporting/reporting/combined-annual-and-sustainability-report/BAT_Annual_Report_2025.pdf</li>
+        <li>BAT Velo brand page: https://www.bat.com/brands-and-innovation/velo</li>
+        <li>Altria 2025 results / on! and oral growth: https://investor.altria.com/press-releases/news-details/2025/Altria-Reports-2025-First-Quarter-Results-Reaffirms-Full-Year-Guidance/default.aspx</li>
+        <li>FDA marketing authorization for ZYN (Jan 16, 2025): https://www.fda.gov/news-events/press-announcements/fda-authorizes-marketing-20-zyn-nicotine-pouch-products-after-extensive-scientific-review</li>
+        <li>FDA marketing orders page (incl. on! PLUS Dec 19, 2025): https://www.fda.gov/tobacco-products/market-and-distribute-tobacco-product/tobacco-products-marketing-orders</li>
+        <li>PMI Czech launch / ZYN expansion: https://www.pmi.com/resources/docs/default-source/czech-market/news-en/press_release_2025-01-23_zyn-nicotine-pouches-arrive-in-the-czech-republic.pdf</li>
+        <li>KT&amp;G press release and business overview: https://www.ktng.com/media/news/press-release/detail/300064 · https://www.ktng.com/product</li>
+        <li>국가법령정보센터 담배사업법: https://www.law.go.kr/lsInfoP.do?lsiSeq=280343&viewCls=lsRvsDocInfoR</li>
+        <li>KHEPI 담배 정의 개정 이슈 해설: https://webzine.khepi.or.kr/vol67/html/cnt_1_2.jsp</li>
+        <li>CDC nicotine pouches overview (Jan 31, 2025): https://www.cdc.gov/tobacco/nicotine-pouches/index.html</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
