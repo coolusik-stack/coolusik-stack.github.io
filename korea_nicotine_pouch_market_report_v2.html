@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국 니코틴 파우치 시장 보고서 2025</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy-900: #0a0f1e;
+    --navy-800: #0f1830;
+    --navy-700: #152040;
+    --navy-600: #1e2d58;
+    --navy-500: #243470;
+    --gold-400: #d4a843;
+    --gold-300: #e8c060;
+    --gold-200: #f0d080;
+    --gold-100: #faecc8;
+    --teal-400: #2dd4bf;
+    --teal-300: #5eead4;
+    --crimson: #e05252;
+    --emerald: #34d399;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-600: #475569;
+    --slate-800: #1e293b;
+    --white: #ffffff;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --card-bg: rgba(21, 32, 64, 0.8);
+    --card-border: rgba(212, 168, 67, 0.2);
+    --section-gap: 5rem;
+    --font-sans: 'Segoe UI', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--navy-900);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy-800); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-400); border-radius: 3px; }
+
+  /* ===== NOISE TEXTURE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 15, 30, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--gold-400), var(--gold-200));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--navy-900);
+  }
+
+  .nav-logo-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold-300);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--slate-400);
+    text-decoration: none;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold-300);
+    background: rgba(212, 168, 67, 0.08);
+  }
+
+  .nav-badge {
+    font-size: 0.72rem;
+    background: linear-gradient(135deg, var(--gold-400), var(--gold-300));
+    color: var(--navy-900);
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(36, 52, 112, 0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 80%, rgba(212, 168, 67, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 20% 60%, rgba(45, 212, 191, 0.05) 0%, transparent 60%),
+      linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
+  }
+
+  /* Animated grid lines */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(212, 168, 67, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 168, 67, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+  }
+
+  /* Orbs */
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: floatOrb 8s ease-in-out infinite;
+  }
+
+  .hero-orb-1 {
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212, 168, 67, 0.12) 0%, transparent 70%);
+    top: -100px; left: -100px;
+    animation-delay: 0s;
+  }
+
+  .hero-orb-2 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.08) 0%, transparent 70%);
+    bottom: 0; right: -50px;
+    animation-delay: -4s;
+  }
+
+  @keyframes floatOrb {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    background: rgba(212, 168, 67, 0.08);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold-400);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title .accent {
+    background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-200) 50%, var(--teal-300) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--slate-400);
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1.25rem 2rem;
+    background: rgba(21, 32, 64, 0.6);
+    border: 1px solid rgba(212, 168, 67, 0.15);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .hero-stat:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 168, 67, 0.35);
+  }
+
+  .hero-stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gold-400), var(--gold-200));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 0.78rem;
+    color: var(--slate-400);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    position: relative;
+    padding: var(--section-gap) 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-number {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-title .line {
+    display: block;
+  }
+
+  .section-title .highlight {
+    background: linear-gradient(135deg, var(--gold-400), var(--teal-300));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-400), transparent);
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--slate-400);
+    max-width: 680px;
+    line-height: 1.8;
+    margin-top: 1rem;
+  }
+
+  /* ===== SEPARATOR LINE ===== */
+  .separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.2), transparent);
+    margin: 0;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 168, 67, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 168, 67, 0.1);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-icon-gold { background: rgba(212, 168, 67, 0.12); }
+  .card-icon-teal { background: rgba(45, 212, 191, 0.1); }
+  .card-icon-crimson { background: rgba(224, 82, 82, 0.1); }
+  .card-icon-emerald { background: rgba(52, 211, 153, 0.1); }
+  .card-icon-purple { background: rgba(167, 139, 250, 0.1); }
+
+  .card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-400);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-body {
+    font-size: 0.92rem;
+    color: var(--slate-400);
+    line-height: 1.8;
+  }
+
+  /* ===== GRID LAYOUTS ===== */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(45, 212, 191, 0.05) 100%);
+    border: 1px solid rgba(212, 168, 67, 0.2);
+    border-left: 4px solid var(--gold-400);
+    border-radius: 0 16px 16px 0;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+  }
+
+  .highlight-box p {
+    font-size: 1rem;
+    color: var(--slate-300);
+    line-height: 1.8;
+  }
+
+  .highlight-box strong {
+    color: var(--gold-300);
+  }
+
+  /* ===== MARKET SIZE SECTION ===== */
+  .market-overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .big-number {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-200) 60%, var(--teal-300) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .big-number-label {
+    font-size: 0.9rem;
+    color: var(--slate-400);
+    margin-top: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ===== BAR CHART ===== */
+  .chart-container {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .chart-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .chart-subtitle {
+    font-size: 0.8rem;
+    color: var(--slate-400);
+    margin-bottom: 1.75rem;
+  }
+
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 60px;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bar-label {
+    font-size: 0.8rem;
+    color: var(--slate-400);
+    text-align: right;
+  }
+
+  .bar-track {
+    height: 10px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    transition: width 1s ease;
+  }
+
+  .bar-fill-gold {
+    background: linear-gradient(90deg, var(--gold-400), var(--gold-200));
+  }
+
+  .bar-fill-teal {
+    background: linear-gradient(90deg, var(--teal-400), var(--teal-300));
+  }
+
+  .bar-fill-blue {
+    background: linear-gradient(90deg, #60a5fa, #93c5fd);
+  }
+
+  .bar-fill-purple {
+    background: linear-gradient(90deg, #a78bfa, #c4b5fd);
+  }
+
+  .bar-value {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  /* ===== DONUT CHART (SVG) ===== */
+  .donut-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .legend-name { color: var(--slate-300); flex: 1; }
+  .legend-pct { font-weight: 700; color: var(--white); }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-400), var(--teal-400), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 2.5rem 2rem;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.375rem;
+    top: 0.2rem;
+    width: 14px;
+    height: 14px;
+    background: var(--gold-400);
+    border-radius: 50%;
+    border: 3px solid var(--navy-900);
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.3);
+  }
+
+  .timeline-year {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gold-400);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-body {
+    font-size: 0.88rem;
+    color: var(--slate-400);
+    line-height: 1.7;
+  }
+
+  /* ===== BRAND CARDS ===== */
+  .brand-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.75rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .brand-card-pmi::before { background: linear-gradient(90deg, #e8c060, #f0d080); }
+  .brand-card-bat::before { background: linear-gradient(90deg, #2dd4bf, #5eead4); }
+  .brand-card-ktg::before { background: linear-gradient(90deg, #60a5fa, #93c5fd); }
+  .brand-card-swedish::before { background: linear-gradient(90deg, #a78bfa, #c4b5fd); }
+
+  .brand-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+  }
+
+  .brand-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .brand-name {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .tag-leader { background: rgba(212, 168, 67, 0.15); color: var(--gold-300); border: 1px solid rgba(212, 168, 67, 0.25); }
+  .tag-challenger { background: rgba(45, 212, 191, 0.1); color: var(--teal-300); border: 1px solid rgba(45, 212, 191, 0.2); }
+  .tag-domestic { background: rgba(96, 165, 250, 0.1); color: #93c5fd; border: 1px solid rgba(96, 165, 250, 0.2); }
+  .tag-pioneer { background: rgba(167, 139, 250, 0.1); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.2); }
+
+  .brand-parent {
+    font-size: 0.78rem;
+    color: var(--slate-400);
+    margin-bottom: 1rem;
+    letter-spacing: 0.03em;
+  }
+
+  .brand-product {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--white);
+    background: rgba(255,255,255,0.06);
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-body {
+    font-size: 0.88rem;
+    color: var(--slate-400);
+    line-height: 1.8;
+  }
+
+  .brand-stat-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .brand-stat {
+    flex: 1;
+    text-align: center;
+  }
+
+  .brand-stat-val {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    display: block;
+  }
+
+  .brand-stat-lbl {
+    font-size: 0.72rem;
+    color: var(--slate-400);
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== TREND CHIPS ===== */
+  .trend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .trend-chip {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+
+  .trend-chip:hover {
+    border-color: rgba(212, 168, 67, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .trend-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .trend-content h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .trend-content p {
+    font-size: 0.84rem;
+    color: var(--slate-400);
+    line-height: 1.7;
+  }
+
+  /* ===== REGULATION TABLE ===== */
+  .reg-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .reg-table th {
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(212, 168, 67, 0.15);
+  }
+
+  .reg-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: var(--slate-300);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+
+  .reg-table tr:hover td {
+    background: rgba(212, 168, 67, 0.03);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .status-active { background: rgba(52, 211, 153, 0.12); color: var(--emerald); border: 1px solid rgba(52, 211, 153, 0.2); }
+  .status-pending { background: rgba(212, 168, 67, 0.12); color: var(--gold-300); border: 1px solid rgba(212, 168, 67, 0.2); }
+  .status-grey { background: rgba(148, 163, 184, 0.1); color: var(--slate-400); border: 1px solid rgba(148, 163, 184, 0.15); }
+
+  /* ===== SWOT ===== */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(212, 168, 67, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .swot-cell {
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .swot-s { background: rgba(52, 211, 153, 0.06); }
+  .swot-w { background: rgba(224, 82, 82, 0.06); }
+  .swot-o { background: rgba(212, 168, 67, 0.06); }
+  .swot-t { background: rgba(167, 139, 250, 0.06); }
+
+  .swot-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .swot-letter {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .swot-s .swot-letter { background: rgba(52, 211, 153, 0.15); color: var(--emerald); }
+  .swot-w .swot-letter { background: rgba(224, 82, 82, 0.15); color: var(--crimson); }
+  .swot-o .swot-letter { background: rgba(212, 168, 67, 0.15); color: var(--gold-300); }
+  .swot-t .swot-letter { background: rgba(167, 139, 250, 0.15); color: #c4b5fd; }
+
+  .swot-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .swot-name-sub {
+    font-size: 0.75rem;
+    color: var(--slate-400);
+  }
+
+  .swot-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .swot-list li {
+    font-size: 0.88rem;
+    color: var(--slate-300);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .swot-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--slate-500);
+    font-size: 0.75rem;
+    top: 0.05em;
+  }
+
+  /* ===== GROWTH FORECAST CHART ===== */
+  .forecast-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+    height: 200px;
+    padding: 1rem 0 0;
+  }
+
+  .forecast-bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+    justify-content: flex-end;
+  }
+
+  .forecast-bar {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    min-height: 8px;
+    transition: opacity 0.3s;
+  }
+
+  .forecast-bar:hover { opacity: 0.85; }
+
+  .forecast-bar-actual {
+    background: linear-gradient(180deg, var(--gold-400) 0%, rgba(212, 168, 67, 0.5) 100%);
+  }
+
+  .forecast-bar-proj {
+    background: linear-gradient(180deg, var(--teal-300) 0%, rgba(45, 212, 191, 0.3) 100%);
+    opacity: 0.85;
+  }
+
+  .forecast-val {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .forecast-year {
+    font-size: 0.72rem;
+    color: var(--slate-400);
+    text-align: center;
+  }
+
+  .forecast-axis {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 0.5rem;
+  }
+
+  .forecast-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .forecast-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--slate-400);
+  }
+
+  .forecast-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  /* ===== TAX CALLOUT ===== */
+  .tax-callout {
+    background: linear-gradient(135deg, rgba(224, 82, 82, 0.08) 0%, rgba(212, 168, 67, 0.05) 100%);
+    border: 1px solid rgba(224, 82, 82, 0.2);
+    border-left: 4px solid var(--crimson);
+    border-radius: 0 16px 16px 0;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+  }
+
+  .tax-callout-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--crimson);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .tax-callout p {
+    font-size: 0.95rem;
+    color: var(--slate-300);
+    line-height: 1.8;
+  }
+
+  /* ===== METRIC CARDS ROW ===== */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .metric-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .metric-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 168, 67, 0.3);
+  }
+
+  .metric-val {
+    font-size: 2rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .metric-val-gold { color: var(--gold-400); }
+  .metric-val-teal { color: var(--teal-300); }
+  .metric-val-blue { color: #60a5fa; }
+  .metric-val-emerald { color: var(--emerald); }
+  .metric-val-crimson { color: var(--crimson); }
+
+  .metric-label {
+    font-size: 0.8rem;
+    color: var(--slate-400);
+    line-height: 1.5;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy-800);
+    border-top: 1px solid rgba(212, 168, 67, 0.1);
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .footer-left h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-left p {
+    font-size: 0.82rem;
+    color: var(--slate-400);
+    line-height: 1.7;
+    max-width: 500px;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-date {
+    font-size: 0.8rem;
+    color: var(--gold-400);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--slate-400);
+    margin-top: 0.25rem;
+  }
+
+  /* ===== PROGRESS RING ===== */
+  .progress-ring-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .progress-ring-label {
+    position: absolute;
+    text-align: center;
+  }
+
+  .progress-ring-val {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+
+  .progress-ring-sub {
+    font-size: 0.65rem;
+    color: var(--slate-400);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  /* ===== RISK MATRIX ===== */
+  .risk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .risk-item:last-child { border-bottom: none; }
+
+  .risk-level {
+    flex-shrink: 0;
+    width: 72px;
+    padding: 0.3rem 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .risk-high { background: rgba(224, 82, 82, 0.15); color: var(--crimson); }
+  .risk-medium { background: rgba(212, 168, 67, 0.15); color: var(--gold-300); }
+  .risk-low { background: rgba(52, 211, 153, 0.12); color: var(--emerald); }
+
+  .risk-content h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .risk-content p {
+    font-size: 0.85rem;
+    color: var(--slate-400);
+    line-height: 1.7;
+  }
+
+  /* ===== OPPORTUNITY CARDS ===== */
+  .opp-card {
+    background: linear-gradient(135deg, rgba(21, 32, 64, 0.9) 0%, rgba(15, 24, 48, 0.9) 100%);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .opp-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 168, 67, 0.3);
+  }
+
+  .opp-num {
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+
+  .opp-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .opp-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .opp-body {
+    font-size: 0.87rem;
+    color: var(--slate-400);
+    line-height: 1.8;
+  }
+
+  .opp-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold-400);
+    background: rgba(212, 168, 67, 0.08);
+    border: 1px solid rgba(212, 168, 67, 0.15);
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .market-overview-grid { grid-template-columns: 1fr; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-right { text-align: left; }
+  }
+
+  @media (max-width: 600px) {
+    :root { --section-gap: 3.5rem; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1rem; }
+    .hero-stat { padding: 1rem 1.25rem; }
+    nav { padding: 0 1rem; }
+    .section { padding: var(--section-gap) 1.25rem; }
+    .card { padding: 1.5rem; }
+    .swot-cell { padding: 1.5rem; }
+    .bar-row { grid-template-columns: 80px 1fr 50px; }
+    .donut-wrapper { flex-direction: column; }
+  }
+
+  /* ===== SCROLL FADE IN ANIMATION ===== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  /* ===== SECTION BG ACCENT ===== */
+  .section-accent {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+  }
+
+  .accent-gold { background: radial-gradient(circle, rgba(212, 168, 67, 0.04) 0%, transparent 70%); }
+  .accent-teal { background: radial-gradient(circle, rgba(45, 212, 191, 0.04) 0%, transparent 70%); }
+
+  /* ===== INLINE BADGE ===== */
+  .inline-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .badge-new { background: rgba(52, 211, 153, 0.15); color: var(--emerald); }
+  .badge-hot { background: rgba(224, 82, 82, 0.15); color: var(--crimson); }
+  .badge-draft { background: rgba(212, 168, 67, 0.15); color: var(--gold-300); }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">NP</div>
+    <span class="nav-logo-text">Korea NP Market Report</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">시장 개요</a></li>
+    <li><a href="#growth">성장 전망</a></li>
+    <li><a href="#players">주요 플레이어</a></li>
+    <li><a href="#trends">소비자 트렌드</a></li>
+    <li><a href="#regulation">규제 환경</a></li>
+    <li><a href="#outlook">기회와 위험</a></li>
+  </ul>
+  <span class="nav-badge">2025 리포트</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content fade-up">
+    <div class="hero-eyebrow">시장 분석 보고서 · 2025</div>
+    <h1 class="hero-title">
+      한국<br>
+      <span class="accent">니코틴 파우치</span><br>
+      시장 보고서
+    </h1>
+    <p class="hero-subtitle">
+      급성장하는 글로벌 무연 니코틴 시장 속에서 한국 시장의 현황, 규제 환경, 소비자 트렌드, 그리고 미래 성장 기회를 심층 분석합니다.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value">$11.3B</span>
+        <span class="hero-stat-label">한국 담배 시장 규모</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">30.1%</span>
+        <span class="hero-stat-label">글로벌 CAGR (2025E)</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">18.4%</span>
+        <span class="hero-stat-label">가열담배 점유율 (2024)</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">초기</span>
+        <span class="hero-stat-label">한국 NP 시장 단계</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 1: 시장 개요 -->
+<section class="section" id="overview">
+  <div class="section-accent accent-gold" style="top:-200px;right:-200px;"></div>
+  <div class="section-header">
+    <span class="section-number">01 — 시장 개요</span>
+    <h2 class="section-title">
+      <span class="line">한국 담배 산업과</span>
+      <span class="line highlight">니코틴 파우치의 부상</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      한국은 연간 약 11조 3천억 원(약 $11.3B) 규모의 담배 시장을 보유한 아시아 주요 담배 소비국입니다. 가열담배 시장에서 세계 최고 수준의 경쟁이 펼쳐지는 가운데, 니코틴 파우치는 아직 태동기에 있습니다.
+    </p>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-card">
+      <div class="metric-val metric-val-gold">20%</div>
+      <div class="metric-label">스모커 중 가열담배 전환 비율 (2024)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val metric-val-teal">60%+</div>
+      <div class="metric-label">KT&G 국내 담배 시장 점유율</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val metric-val-blue">132억</div>
+      <div class="metric-label">가열담배 스틱 판매량 (2024)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val metric-val-emerald">+8.3%</div>
+      <div class="metric-label">가열담배 YoY 성장률 (2024)</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-val metric-val-crimson">회색지대</div>
+      <div class="metric-label">현재 NP 규제 상태</div>
+    </div>
+  </div>
+
+  <div class="market-overview-grid" style="margin-top:2.5rem;">
+    <div>
+      <div class="card">
+        <div class="card-icon card-icon-gold">🌏</div>
+        <div class="card-label">시장 정의</div>
+        <div class="card-title">니코틴 파우치(NP)란?</div>
+        <div class="card-body">
+          니코틴 파우치는 담배 잎을 포함하지 않는 소형 파우치 형태의 구강 니코틴 제품입니다. 입술과 잇몸 사이에 넣어 사용하며, 연기나 증기를 발생시키지 않아 '스피릿프리(spit-free)' 사용이 가능합니다.
+          <br><br>
+          스웨덴의 스누스(Snus) 문화에서 파생된 이 제품은 글로벌 무연 니코틴 카테고리의 핵심으로 부상하였으며, ZYN, VELO, On! 등 주요 브랜드가 전 세계 시장을 선도하고 있습니다.
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1.5rem;">
+        <div class="card-icon card-icon-teal">📊</div>
+        <div class="card-label">한국 시장 맥락</div>
+        <div class="card-title">전환점의 담배 시장</div>
+        <div class="card-body">
+          한국 담배 시장은 전통 연초의 장기적 하락과 가열담배·전자담배로의 빠른 이동이 동시에 일어나고 있습니다. PMI·BAT·KT&G의 3강 구도 속에서 니코틴 파우치는 아직 소비자 인지도가 낮고 유통망도 미비한 상태입니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-title">한국 담배 제품별 시장 점유율 추이</div>
+      <div class="chart-subtitle">가열담배 쾌속 성장 vs. 전통 연초 감소 (2017→2024)</div>
+      <div style="margin-bottom:1.5rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--slate-400);margin-bottom:0.5rem;">
+          <span>가열담배 점유율</span>
+          <span style="color:var(--gold-300);font-weight:700;">2017→2024</span>
+        </div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-label">2017</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:2.2%"></div></div>
+            <div class="bar-value">2.2%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">2019</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:10%"></div></div>
+            <div class="bar-value">10%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">2021</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-teal" style="width:14%"></div></div>
+            <div class="bar-value">14%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">2023</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-teal" style="width:17%"></div></div>
+            <div class="bar-value">17%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">2024</div>
+            <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:18.4%"></div></div>
+            <div class="bar-value" style="color:var(--gold-300);">18.4%</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <div style="font-size:0.78rem;color:var(--slate-400);margin-bottom:1rem;">가열담배 브랜드별 점유율 (2024)</div>
+        <div class="donut-wrapper">
+          <svg width="140" height="140" viewBox="0 0 140 140" style="flex-shrink:0;">
+            <circle cx="70" cy="70" r="54" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="22"/>
+            <!-- KT&G 46% -->
+            <circle cx="70" cy="70" r="54" fill="none"
+              stroke="url(#g1)" stroke-width="22"
+              stroke-dasharray="155.8 338.7"
+              stroke-dashoffset="0"
+              transform="rotate(-90 70 70)"/>
+            <!-- PMI 43% -->
+            <circle cx="70" cy="70" r="54" fill="none"
+              stroke="url(#g2)" stroke-width="22"
+              stroke-dasharray="145.7 348.8"
+              stroke-dashoffset="-155.8"
+              transform="rotate(-90 70 70)"/>
+            <!-- BAT 9.9% -->
+            <circle cx="70" cy="70" r="54" fill="none"
+              stroke="#60a5fa" stroke-width="22"
+              stroke-dasharray="33.5 460.9"
+              stroke-dashoffset="-301.5"
+              transform="rotate(-90 70 70)"/>
+            <!-- Others 1.1% -->
+            <circle cx="70" cy="70" r="54" fill="none"
+              stroke="rgba(148,163,184,0.3)" stroke-width="22"
+              stroke-dasharray="3.7 460.9"
+              stroke-dashoffset="-335"
+              transform="rotate(-90 70 70)"/>
+            <defs>
+              <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#d4a843"/>
+                <stop offset="100%" stop-color="#f0d080"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2dd4bf"/>
+                <stop offset="100%" stop-color="#5eead4"/>
+              </linearGradient>
+            </defs>
+            <text x="70" y="65" text-anchor="middle" font-size="18" font-weight="900" fill="white">3강</text>
+            <text x="70" y="83" text-anchor="middle" font-size="10" fill="#94a3b8">구도</text>
+          </svg>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--gold-400);"></div>
+              <span class="legend-name">KT&G (lil)</span>
+              <span class="legend-pct">46%</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--teal-400);"></div>
+              <span class="legend-name">PMI (IQOS)</span>
+              <span class="legend-pct">43%</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#60a5fa;"></div>
+              <span class="legend-name">BAT (Glo)</span>
+              <span class="legend-pct">9.9%</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:rgba(148,163,184,0.4);"></div>
+              <span class="legend-name">기타</span>
+              <span class="legend-pct">1.1%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:2.5rem;">
+    <p>
+      <strong>핵심 인사이트:</strong> 한국은 세계에서 가장 경쟁이 치열한 가열담배 시장 중 하나입니다. 이는 소비자들이 이미 무연·무취 니코틴 제품에 익숙해져 있다는 것을 의미하며, 니코틴 파우치의 잠재적 수용성이 높을 수 있음을 시사합니다. 단, 규제 및 가격 장벽 해소가 전제 조건입니다.
+    </p>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 2: 규모 및 성장 전망 -->
+<section class="section" id="growth">
+  <div class="section-accent accent-teal" style="top:-100px;left:-300px;"></div>
+  <div class="section-header">
+    <span class="section-number">02 — 규모 및 성장 전망</span>
+    <h2 class="section-title">
+      <span class="line">글로벌 폭발 성장,</span>
+      <span class="line highlight">한국은 아직 초기 단계</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      전 세계 니코틴 파우치 시장은 연평균 약 30%의 고성장을 기록 중입니다. 한국 시장은 규제 불확실성과 소비자 인지도 부족으로 아직 성숙 단계에 진입하지 못했지만, 구조적 성장 가능성은 충분합니다.
+    </p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem;">
+    <div>
+      <div style="font-size:0.78rem;color:var(--slate-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">글로벌 시장 규모</div>
+      <div class="big-number">$18.7B</div>
+      <div class="big-number-label">2029년 예상 시장 규모 (글로벌)</div>
+      <div style="margin-top:1.5rem;font-size:0.9rem;color:var(--slate-400);line-height:1.8;">
+        2024년 $5.17B에서 2029년 $18.7B으로 성장 예상. 연평균성장률(CAGR) <strong style="color:var(--gold-300);">29.1%</strong>로 소비재 중 최고 수준의 성장 모멘텀을 보여주고 있습니다.
+      </div>
+    </div>
+    <div class="chart-container">
+      <div class="chart-title">글로벌 니코틴 파우치 시장 성장 전망</div>
+      <div class="chart-subtitle">단위: 십억 달러 (B$) | 점선: 추정치</div>
+      <div class="forecast-chart">
+        <div class="forecast-bar-group">
+          <div class="forecast-val">1.2</div>
+          <div class="forecast-bar forecast-bar-actual" style="height:13%"></div>
+          <div class="forecast-year">2021</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">2.1</div>
+          <div class="forecast-bar forecast-bar-actual" style="height:22%"></div>
+          <div class="forecast-year">2022</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">3.3</div>
+          <div class="forecast-bar forecast-bar-actual" style="height:35%"></div>
+          <div class="forecast-year">2023</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">5.2</div>
+          <div class="forecast-bar forecast-bar-actual" style="height:55%"></div>
+          <div class="forecast-year">2024</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">6.7</div>
+          <div class="forecast-bar forecast-bar-proj" style="height:72%"></div>
+          <div class="forecast-year" style="color:var(--teal-300);">2025E</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">9.2</div>
+          <div class="forecast-bar forecast-bar-proj" style="height:82%"></div>
+          <div class="forecast-year" style="color:var(--teal-300);">2027E</div>
+        </div>
+        <div class="forecast-bar-group">
+          <div class="forecast-val">18.7</div>
+          <div class="forecast-bar forecast-bar-proj" style="height:100%"></div>
+          <div class="forecast-year" style="color:var(--teal-300);">2029E</div>
+        </div>
+      </div>
+      <div class="forecast-legend">
+        <div class="forecast-legend-item">
+          <div class="forecast-legend-dot" style="background:var(--gold-400);"></div>
+          <span>실적치</span>
+        </div>
+        <div class="forecast-legend-item">
+          <div class="forecast-legend-dot" style="background:var(--teal-300);"></div>
+          <span>추정/예측치</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:2rem;">
+    <div class="card">
+      <div class="card-icon card-icon-gold">🏔️</div>
+      <div class="card-label">한국 시장 성장 동력</div>
+      <div class="card-title">구조적 기회 요인</div>
+      <div class="card-body">
+        높은 스마트폰·인터넷 보급률, 건강의식 증가, 실내 흡연 제한 강화, 가열담배 경험으로 높아진 대체 제품 수용성이 니코틴 파우치 시장 확대의 핵심 촉진제입니다.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-teal">📱</div>
+      <div class="card-label">유통 채널</div>
+      <div class="card-title">이커머스 직구 주도</div>
+      <div class="card-body">
+        현재 한국에서 니코틴 파우치는 공식 오프라인 유통망이 없으며, 대부분 해외 직구(스웨덴·미국 온라인 쇼핑몰)를 통해 구매됩니다. 규제 명확화 이후 오프라인 확장 여지가 큽니다.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-crimson">⚠️</div>
+      <div class="card-label">성장 제약 요인</div>
+      <div class="card-title">가격 & 인지도 장벽</div>
+      <div class="card-body">
+        중량 기준 과세로 캔당 세금만 약 ₩12,700, 소비자가격 ₩15,000~18,000으로 담배 대비 약 4배 수준. 소비자 인지도와 유통 인프라 부재가 단기 성장의 주요 장애입니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-container" style="margin-top:2rem;">
+    <div class="chart-title">지역별 니코틴 파우치 성장률 비교 (2024→2029E CAGR)</div>
+    <div class="chart-subtitle">아시아태평양 지역이 가장 높은 성장 잠재력 보유</div>
+    <div class="bar-chart" style="margin-top:1.5rem;">
+      <div class="bar-row">
+        <div class="bar-label">북미</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:82%"></div></div>
+        <div class="bar-value">~28%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">유럽</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-teal" style="width:70%"></div></div>
+        <div class="bar-value">~24%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">아태 (전체)</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:95%"></div></div>
+        <div class="bar-value">~33%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">한국 (잠재)</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-purple" style="width:88%"></div></div>
+        <div class="bar-value">규제 해소시 ~30%+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 3: 주요 플레이어 -->
+<section class="section" id="players">
+  <div class="section-header">
+    <span class="section-number">03 — 주요 플레이어</span>
+    <h2 class="section-title">
+      <span class="line">글로벌 빅4와</span>
+      <span class="line highlight">국내 시장 경쟁 구도</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      ZYN(PMI), VELO(BAT), On!(JTI), Loop(Swedish Match) 등 글로벌 리더와 함께, KT&G의 국내 진입 가능성이 한국 시장의 핵심 변수입니다.
+    </p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem;">
+    <div class="brand-card brand-card-pmi">
+      <div class="brand-header">
+        <span class="brand-name" style="color:var(--gold-300);">ZYN</span>
+        <span class="brand-tag tag-leader">글로벌 1위</span>
+      </div>
+      <div class="brand-parent">Philip Morris International (PMI)</div>
+      <span class="brand-product">니코틴 파우치 · 스웨덴 원산</span>
+      <div class="brand-body">
+        스웨덴 매치(Swedish Match)가 개발, PMI 인수 후 세계 1위 니코틴 파우치 브랜드로 성장. 3~6mg 다양한 니코틴 강도와 쿨민트·시트러스 등 다양한 향으로 젊은 층 선호. PMI Korea는 IQOS로 한국 시장 43% 점유, ZYN 한국 공식 런칭 시 강력한 유통망 활용 가능.
+      </div>
+      <div class="brand-stat-row">
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--gold-300);">1위</span>
+          <span class="brand-stat-lbl">글로벌 NP 순위</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--gold-300);">43%</span>
+          <span class="brand-stat-lbl">한국 HTP 점유율</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--gold-300);">70+</span>
+          <span class="brand-stat-lbl">진출 국가 수</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-card brand-card-bat">
+      <div class="brand-header">
+        <span class="brand-name" style="color:var(--teal-300);">VELO</span>
+        <span class="brand-tag tag-challenger">글로벌 2위</span>
+      </div>
+      <div class="brand-parent">British American Tobacco (BAT)</div>
+      <span class="brand-product">니코틴 파우치 · Epok→Lyft→VELO 진화</span>
+      <div class="brand-body">
+        니코틴 파우치의 원조 브랜드. Epok으로 시작해 Lyft를 거쳐 VELO로 리브랜딩. ZYN의 가장 강력한 경쟁자로 유럽·북미 시장 점유. BAT Korea는 한국 HTP 시장 9.9% 점유 중이며, VELO 한국 출시를 위한 규제 모니터링 중.
+      </div>
+      <div class="brand-stat-row">
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--teal-300);">2위</span>
+          <span class="brand-stat-lbl">글로벌 NP 순위</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--teal-300);">9.9%</span>
+          <span class="brand-stat-lbl">한국 HTP 점유율</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:var(--teal-300);">50+</span>
+          <span class="brand-stat-lbl">진출 국가 수</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-card brand-card-ktg">
+      <div class="brand-header">
+        <span class="brand-name" style="color:#93c5fd;">KT&G</span>
+        <span class="brand-tag tag-domestic">국내 강자</span>
+      </div>
+      <div class="brand-parent">한국담배인삼공사 (국내 1위)</div>
+      <span class="brand-product">lil (HTP) · 전통 연초 · 잠재적 NP 진입</span>
+      <div class="brand-body">
+        국내 담배 시장 60%+ 점유, lil HTP 브랜드로 46% 가열담배 점유. 강력한 유통망과 브랜드 인지도 보유. NP 규제 명확화 시 가장 빠른 시장 진입이 가능한 플레이어로 평가. 독자 NP 브랜드 개발 또는 글로벌 브랜드와의 협력 가능성 내재.
+      </div>
+      <div class="brand-stat-row">
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#93c5fd;">60%+</span>
+          <span class="brand-stat-lbl">국내 담배 점유율</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#93c5fd;">46%</span>
+          <span class="brand-stat-lbl">국내 HTP 점유율</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#93c5fd;">잠재</span>
+          <span class="brand-stat-lbl">NP 시장 진입도</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="brand-card brand-card-swedish">
+      <div class="brand-header">
+        <span class="brand-name" style="color:#c4b5fd;">On!</span>
+        <span class="brand-tag tag-pioneer">틈새 브랜드</span>
+      </div>
+      <div class="brand-parent">Altria Group (미국)</div>
+      <span class="brand-product">니코틴 파우치 · 초슬림 디자인</span>
+      <div class="brand-body">
+        미국 시장에서 ZYN, VELO와 3강 구도를 형성하는 브랜드. 초슬림 파우치 디자인으로 착용감 차별화. 직구 채널을 통해 국내 얼리어답터에게 인지도 상승 중. 아시아 시장 진출 전략 수립 단계로 한국이 잠재 타겟 시장.
+      </div>
+      <div class="brand-stat-row">
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#c4b5fd;">3위</span>
+          <span class="brand-stat-lbl">미국 NP 순위</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#c4b5fd;">초슬림</span>
+          <span class="brand-stat-lbl">제품 차별화</span>
+        </div>
+        <div class="brand-stat">
+          <span class="brand-stat-val" style="color:#c4b5fd;">탐색중</span>
+          <span class="brand-stat-lbl">한국 진출 상태</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p>
+      <strong>경쟁 시나리오:</strong> 규제 명확화 이후 한국 NP 시장은 이미 유통망을 보유한 <strong>PMI(ZYN)</strong>와 <strong>KT&G</strong>의 2강 구도로 시작될 가능성이 높습니다. BAT(VELO)는 현재 한국 HTP 시장 점유율이 한 자릿수로 열세인 만큼 NP 시장에서 반전을 노릴 유인이 큽니다.
+    </p>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 4: 소비자 트렌드 -->
+<section class="section" id="trends">
+  <div class="section-accent accent-gold" style="bottom:-200px;left:-200px;"></div>
+  <div class="section-header">
+    <span class="section-number">04 — 소비자 트렌드</span>
+    <h2 class="section-title">
+      <span class="line">변화하는 한국 흡연자의</span>
+      <span class="line highlight">니코틴 소비 패턴</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      한국 소비자는 '냄새 없음', '덜 해롭다'는 인식에 민감하게 반응하며 대체 니코틴 제품 수용성이 높아지고 있습니다. 니코틴 파우치의 핵심 타겟 세그먼트를 분석합니다.
+    </p>
+  </div>
+
+  <div class="trend-grid">
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-gold">🚭</div>
+      <div class="trend-content">
+        <h4>무취·무연 선호 급증</h4>
+        <p>실내 흡연 규제 강화와 사회적 압박으로 연기·냄새 없는 제품 수요 급증. 가열담배 전환의 핵심 이유가 '냄새 감소'였던 만큼, NP의 완전 무연 특성은 강력한 어필 포인트.</p>
+      </div>
+    </div>
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-teal">💻</div>
+      <div class="trend-content">
+        <h4>얼리어답터의 직구 트렌드</h4>
+        <p>ZYN, VELO 등을 해외 직구로 구매하는 소비자 커뮤니티 형성 중. 클리앙, 네이버 카페 등 온라인 플랫폼에서 사용법·추천 정보 공유 활발. 초기 인지도 확산의 기반 역할.</p>
+      </div>
+    </div>
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-emerald">🧑‍💼</div>
+      <div class="trend-content">
+        <h4>MZ세대 헬스 컨셔스 소비</h4>
+        <p>20~30대 흡연자는 '하모 리덕션(Harm Reduction)' 개념에 민감. 금연보조제와 니코틴 대체제의 경계를 넘는 새로운 포지셔닝 가능성. 웰빙 라이프스타일과의 결합 마케팅 유효.</p>
+      </div>
+    </div>
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-purple">🏢</div>
+      <div class="trend-content">
+        <h4>사무환경에서의 이용 편의성</h4>
+        <p>재택근무 축소와 사무실 복귀 트렌드 속에서 흡연 부스 이용이 어려운 환경에서도 사용 가능한 NP의 편의성이 부각. 특히 높은 업무 스트레스의 한국 직장인 수요.</p>
+      </div>
+    </div>
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-gold">👩</div>
+      <div class="trend-content">
+        <h4>여성 흡연자 타겟 가능성</h4>
+        <p>흡연이 드러나지 않는 제품 특성상 외관을 중시하는 여성 소비자 세그먼트에서의 어필 가능성. 현재 한국 여성 흡연율은 낮지만 전자담배·가열담배 사용 증가 추세.</p>
+      </div>
+    </div>
+    <div class="trend-chip">
+      <div class="trend-icon card-icon-teal">💸</div>
+      <div class="trend-content">
+        <h4>가격 민감도 (핵심 장벽)</h4>
+        <p>NP 예상 소비자가 ₩15,000~18,000은 일반 담배(₩4,500)의 약 4배. 한국 소비자의 높은 가격 민감도를 감안할 때 적절한 가격 포지셔닝이 시장 진입의 관건.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;" class="chart-container">
+    <div class="chart-title">대체 니코틴 제품 선택 기준 (한국 소비자 주요 요인)</div>
+    <div class="chart-subtitle">복수응답 기준 추정 중요도 순위</div>
+    <div class="bar-chart" style="margin-top:1.5rem;">
+      <div class="bar-row">
+        <div class="bar-label">냄새 감소</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:88%"></div></div>
+        <div class="bar-value">88%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">편의성</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-teal" style="width:75%"></div></div>
+        <div class="bar-value">75%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">건강 위해 감소</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:72%"></div></div>
+        <div class="bar-value">72%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">다양한 맛</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:60%"></div></div>
+        <div class="bar-value">60%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">가격 합리성</div>
+        <div class="bar-track"><div class="bar-fill bar-fill-purple" style="width:82%"></div></div>
+        <div class="bar-value">82%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 5: 규제 환경 -->
+<section class="section" id="regulation">
+  <div class="section-header">
+    <span class="section-number">05 — 규제 환경</span>
+    <h2 class="section-title">
+      <span class="line">회색지대에서</span>
+      <span class="line highlight">규제 명확화로의 전환</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      한국의 니코틴 파우치 규제는 빠르게 변화하고 있습니다. 합성 니코틴을 포함한 모든 니코틴 제품을 담배사업법 체계 내로 편입하는 법 개정이 추진 중이며, 이는 시장의 게임 체인저가 될 전망입니다.
+    </p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:2rem;align-items:start;">
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">~2023년</div>
+          <div class="timeline-title">규제 공백기</div>
+          <div class="timeline-body">담배 잎을 포함하지 않는 합성 니코틴 파우치는 담배사업법 적용 대상이 아님. 세관 통관 기준이 자의적으로 적용되는 불명확한 상태 지속.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--teal-400);box-shadow:0 0 0 3px rgba(45,212,191,0.3);"></div>
+          <div class="timeline-year">2024년</div>
+          <div class="timeline-title">합성 니코틴 규제 논의 본격화 <span class="inline-badge badge-hot">핵심</span></div>
+          <div class="timeline-body">정부 및 국회에서 합성 니코틴을 담배사업법 체계에 편입하는 법 개정 논의 시작. 한국이 $11.3B 담배 시장 정비를 위한 종합 대책 수립 중.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:var(--emerald);box-shadow:0 0 0 3px rgba(52,211,153,0.3);"></div>
+          <div class="timeline-year">2025~2026년</div>
+          <div class="timeline-title">규제 프레임워크 구축 예상 <span class="inline-badge badge-draft">예측</span></div>
+          <div class="timeline-body">담배 유래 여부와 무관하게 모든 니코틴 함유 제품에 동일한 규제 적용 예상. 라이선스 요건, 건강 경고 표시, 소매 통제, 과세가 일괄 적용될 전망.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#a78bfa;box-shadow:0 0 0 3px rgba(167,139,250,0.3);"></div>
+          <div class="timeline-year">규제 이후</div>
+          <div class="timeline-title">본격적 시장 개화 <span class="inline-badge badge-new">기회</span></div>
+          <div class="timeline-body">명확한 규제 하에 글로벌 브랜드의 공식 진출, 국내 기업의 제품 출시, 편의점·약국 등 오프라인 유통망 구축이 가능해지며 시장이 본격 성장할 것으로 전망.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="chart-container">
+        <div class="chart-title">주요 규제 항목별 현황</div>
+        <div class="chart-subtitle" style="margin-bottom:1rem;">2025년 기준 한국 NP 규제 체계</div>
+        <div style="overflow-x:auto;">
+          <table class="reg-table">
+            <thead>
+              <tr>
+                <th>규제 항목</th>
+                <th>현황</th>
+                <th>상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="color:var(--white);">제품 분류</strong><br><small>담배사업법 적용 여부</small></td>
+                <td>합성 니코틴은 법적 공백</td>
+                <td><span class="status-badge status-pending">검토중</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--white);">과세 체계</strong><br><small>중량 기준 과세</small></td>
+                <td>₩1,273.5/g 적용 예정<br>캔당 약 ₩12,700 추정</td>
+                <td><span class="status-badge status-pending">입법예고</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--white);">건강 경고 표시</strong><br><small>포장 규제</small></td>
+                <td>담배 제품 규정 준용 예정</td>
+                <td><span class="status-badge status-pending">검토중</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--white);">온라인 판매</strong><br><small>이커머스 규제</small></td>
+                <td>현행 직구는 개인자가소비용 기준</td>
+                <td><span class="status-badge status-grey">미명확</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--white);">미성년자 판매 금지</strong><br><small>연령 제한</small></td>
+                <td>담배 규제와 동일 적용</td>
+                <td><span class="status-badge status-active">적용중</span></td>
+              </tr>
+              <tr>
+                <td><strong style="color:var(--white);">광고 규제</strong><br><small>마케팅 제한</small></td>
+                <td>담배 광고 금지 규정 준용</td>
+                <td><span class="status-badge status-active">적용중</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tax-callout">
+        <div class="tax-callout-title">⚡ 세금 장벽 경보</div>
+        <p>
+          중량 기준 과세 적용 시 표준 10g 캔 기준 세금만 <strong>약 ₩12,700</strong>. 여기에 수입비용·유통마진·소매마진을 더하면 최종 소비자가 <strong>₩15,000~18,000</strong>이 예상됩니다. 이는 일반 담배의 약 <strong>4배</strong>에 달하는 수준으로, 가격 경쟁력 확보를 위한 세제 조정이 시장 성장의 핵심 열쇠입니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- SECTION 6: 기회와 위험 -->
+<section class="section" id="outlook">
+  <div class="section-accent accent-teal" style="top:-100px;right:-300px;"></div>
+  <div class="section-header">
+    <span class="section-number">06 — 기회와 위험 요인</span>
+    <h2 class="section-title">
+      <span class="line">한국 NP 시장의</span>
+      <span class="line highlight">SWOT 전략 분석</span>
+    </h2>
+    <div class="section-divider"></div>
+    <p class="section-desc">
+      한국 니코틴 파우치 시장의 강점·약점·기회·위협 요인을 종합 분석하여 전략적 시사점을 도출합니다.
+    </p>
+  </div>
+
+  <div class="swot-grid" style="margin-bottom:3rem;">
+    <div class="swot-cell swot-s">
+      <div class="swot-header">
+        <div class="swot-letter">S</div>
+        <div>
+          <div class="swot-name">강점 (Strengths)</div>
+          <div class="swot-name-sub">내부 유리 요인</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>글로벌 최고 수준의 HTP 시장 침투율로 높은 대체 제품 수용성</li>
+        <li>높은 인터넷·스마트폰 보급률로 바이럴 마케팅 및 이커머스 친화적 환경</li>
+        <li>KT&G의 강력한 국내 유통 인프라 활용 가능성</li>
+        <li>글로벌 브랜드(PMI·BAT)의 기존 한국 법인 및 영업망 보유</li>
+        <li>소비자 건강의식 향상으로 하모 리덕션 제품 수요 증가</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-w">
+      <div class="swot-header">
+        <div class="swot-letter">W</div>
+        <div>
+          <div class="swot-name">약점 (Weaknesses)</div>
+          <div class="swot-name-sub">내부 불리 요인</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>소비자 인지도 극히 낮음 — "니코틴 파우치는 한국에 시장이 없다"</li>
+        <li>중량 기준 과세로 인한 비현실적 소비자 가격 (담배 대비 4배)</li>
+        <li>공식 오프라인 유통망 전무, 직구 의존</li>
+        <li>구강담배에 대한 부정적 문화적 인식 및 사용법 생소함</li>
+        <li>임상·안전성 데이터 부족으로 헬스케어 채널 활용 제한</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-o">
+      <div class="swot-header">
+        <div class="swot-letter">O</div>
+        <div>
+          <div class="swot-name">기회 (Opportunities)</div>
+          <div class="swot-name-sub">외부 유리 요인</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>규제 명확화 이후 공식 시장 개화 및 오프라인 유통 확장</li>
+        <li>실내 흡연 규제 지속 강화로 무연 제품 구조적 수요 증가</li>
+        <li>아태지역 NP 시장 성장 선도 국가 될 수 있는 포지션 가능성</li>
+        <li>K-뷰티·K-웰니스 트렌드와 결합한 스마트 마케팅 기회</li>
+        <li>담배 가격 인상 정책 시 NP 상대적 가격 경쟁력 개선 가능성</li>
+        <li>편의점(GS25, CU, 세븐일레븐 등) 채널 통한 대규모 유통 기회</li>
+      </ul>
+    </div>
+    <div class="swot-cell swot-t">
+      <div class="swot-header">
+        <div class="swot-letter">T</div>
+        <div>
+          <div class="swot-name">위협 (Threats)</div>
+          <div class="swot-name-sub">외부 불리 요인</div>
+        </div>
+      </div>
+      <ul class="swot-list">
+        <li>과도한 과세로 합법 시장 성장 저해 → 불법 유통 촉진 가능성</li>
+        <li>가열담배·전자담배와의 치열한 경쟁 (이미 검증된 제품 vs. 신제품)</li>
+        <li>보건복지부·질병청의 보수적 규제 기조로 과도한 규제 리스크</li>
+        <li>소비자 오해 (구강암 등 스누스 관련 오해의 NP 전이)</li>
+        <li>글로벌 금연 운동 확산으로 니코틴 대체제 전반에 대한 반발 가능성</li>
+        <li>PMI·BAT의 글로벌 전략 변화에 따른 한국 투자 우선순위 조정 리스크</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 기회 카드 -->
+  <div class="section-header" style="margin-top:3rem;margin-bottom:2rem;">
+    <span class="section-number">핵심 전략 기회</span>
+    <h3 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);">
+      <span class="line highlight">시장 진입 우선순위 기회 영역</span>
+    </h3>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:3rem;">
+    <div class="opp-card">
+      <span class="opp-num">01</span>
+      <span class="opp-icon">⚖️</span>
+      <div class="opp-title">규제 선제 대응</div>
+      <div class="opp-body">법 개정 논의에 적극 참여, 업계 의견 반영. 세제 합리화 로비를 통해 소비자 접근성을 높이는 규제 프레임워크 구축에 기여.</div>
+      <span class="opp-tag">고우선순위</span>
+    </div>
+    <div class="opp-card">
+      <span class="opp-num">02</span>
+      <span class="opp-icon">📲</span>
+      <div class="opp-title">디지털 커뮤니티 마케팅</div>
+      <div class="opp-body">규제 허용 범위 내에서 온라인 커뮤니티 활용. 얼리어답터 인플루언서를 통한 바이럴 전략으로 규제 이전 인지도 선제 구축.</div>
+      <span class="opp-tag">중기 전략</span>
+    </div>
+    <div class="opp-card">
+      <span class="opp-num">03</span>
+      <span class="opp-icon">🏪</span>
+      <div class="opp-title">편의점 채널 파트너십</div>
+      <div class="opp-body">규제 명확화 즉시 GS25·CU·세븐일레븐 등과 유통 계약 체결. 5만여 개 편의점 네트워크는 즉시 전국 커버리지를 가능케 하는 최강의 유통 자산.</div>
+      <span class="opp-tag">중기 전략</span>
+    </div>
+    <div class="opp-card">
+      <span class="opp-num">04</span>
+      <span class="opp-icon">🤝</span>
+      <div class="opp-title">KT&G 협력 전략</div>
+      <div class="opp-body">외국 브랜드에게 KT&G와의 라이선스·유통 파트너십은 빠른 시장 진입의 최적 경로. KT&G는 자체 NP 개발 또는 글로벌 브랜드 파트너십을 통해 시장 주도권 유지 가능.</div>
+      <span class="opp-tag">파트너십</span>
+    </div>
+    <div class="opp-card">
+      <span class="opp-num">05</span>
+      <span class="opp-icon">🎯</span>
+      <div class="opp-title">프리미엄 포지셔닝</div>
+      <div class="opp-body">높은 가격을 역이용, 프리미엄·럭셔리 니코틴 경험으로 포지셔닝. 가격에 덜 민감한 소득 상위 계층과 외국인 거주자 세그먼트 집중 공략.</div>
+      <span class="opp-tag">틈새 전략</span>
+    </div>
+    <div class="opp-card">
+      <span class="opp-num">06</span>
+      <span class="opp-icon">🏥</span>
+      <div class="opp-title">금연 보조 포지셔닝</div>
+      <div class="opp-body">의료·약국 채널을 통한 금연 보조 제품으로의 포지셔닝 가능성 탐색. 담배 규제보다 완화된 의약외품 체계 활용 시 초기 시장 진입 장벽 낮출 수 있음.</div>
+      <span class="opp-tag">장기 전략</span>
+    </div>
+  </div>
+
+  <!-- 리스크 분석 -->
+  <div class="chart-container" style="margin-top:2rem;">
+    <div class="chart-title">주요 위험 요인 분석</div>
+    <div class="chart-subtitle">위험 수준 및 대응 방향</div>
+    <div style="margin-top:1.5rem;">
+      <div class="risk-item">
+        <div class="risk-level risk-high">HIGH</div>
+        <div class="risk-content">
+          <h4>과세 구조로 인한 가격 경쟁력 상실</h4>
+          <p>현행 중량 기준 과세 체계가 유지될 경우 담배 대비 4배 이상의 소비자가격으로 대중 시장 공략 불가. 세제 개혁 또는 가격 보조 전략 없이는 틈새 시장에 머물 가능성이 높음.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-level risk-high">HIGH</div>
+        <div class="risk-content">
+          <h4>과도한 규제 또는 금지 조치</h4>
+          <p>보건 당국의 강경 입장으로 NP를 금지 또는 극도로 제한할 경우, 합법 시장 자체가 봉쇄될 수 있음. 의회 및 규제당국과의 적극적 정책 대화 필요.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-level risk-medium">MED</div>
+        <div class="risk-content">
+          <h4>소비자 인식 및 문화적 저항</h4>
+          <p>구강담배에 대한 부정적 이미지 및 사용법의 생소함. 적절한 소비자 교육과 사용법 시연 없이는 초기 수용률이 낮을 수 있음. 체험 마케팅 투자 필수.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-level risk-medium">MED</div>
+        <div class="risk-content">
+          <h4>기존 카테고리(HTP·전자담배)와의 경쟁</h4>
+          <p>이미 가열담배와 전자담배로 전환한 소비자들의 추가 전환 유인 창출이 필요. HTP보다 니코틴 만족감이 낮다는 인식이 있을 경우 확산에 한계 직면 가능성.</p>
+        </div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-level risk-low">LOW</div>
+        <div class="risk-content">
+          <h4>불법 유통 및 위조품 리스크</h4>
+          <p>높은 공식 가격이 불법 채널 수요를 자극할 수 있음. 엄격한 정품 인증 및 공급망 관리 필요. 시장 초기 단계에서는 리스크가 낮으나, 시장 성장 시 증가 우려.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- CONCLUSION -->
+<section class="section" style="padding-bottom:4rem;">
+  <div class="section-header">
+    <span class="section-number">결론</span>
+    <h2 class="section-title">
+      <span class="line">한국 NP 시장,</span>
+      <span class="line highlight">전략적 준비의 시간</span>
+    </h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color:rgba(212,168,67,0.25);background:linear-gradient(135deg,rgba(212,168,67,0.06),rgba(21,32,64,0.9));">
+      <div class="card-icon card-icon-gold" style="font-size:1.8rem;width:56px;height:56px;">🎯</div>
+      <div class="card-title" style="font-size:1.3rem;">핵심 전략적 시사점</div>
+      <div class="card-body">
+        <p style="margin-bottom:1rem;">한국 니코틴 파우치 시장은 지금 당장의 기회가 아닌, <strong style="color:var(--gold-300);">2~3년 후를 위한 포지셔닝 시장</strong>입니다.</p>
+        <p style="margin-bottom:1rem;">규제 명확화와 세제 합리화라는 두 가지 변수가 해소되는 시점이 시장 본격화의 트리거가 될 것입니다. 그 이전에 브랜드 인지도 구축, 규제 정책 참여, 유통 파트너십 사전 협의를 완료해야 합니다.</p>
+        <p>가열담배 시장에서 검증된 한국 소비자의 혁신 수용성은 NP 확산의 잠재 동력이며, 아시아태평양 전체에서 한국이 NP 시장의 허브가 될 가능성이 존재합니다.</p>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(45,212,191,0.2);background:linear-gradient(135deg,rgba(45,212,191,0.05),rgba(21,32,64,0.9));">
+      <div class="card-icon card-icon-teal" style="font-size:1.8rem;width:56px;height:56px;">📋</div>
+      <div class="card-title" style="font-size:1.3rem;">단계별 액션 플랜</div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="color:var(--gold-400);font-weight:800;min-width:24px;">1</span>
+            <div><strong style="color:var(--white);">즉시 (0~6개월):</strong> 규제 모니터링 체계 구축, 법무·규제 전문가 확보, 정책 대화 채널 개설</div>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="color:var(--teal-300);font-weight:800;min-width:24px;">2</span>
+            <div><strong style="color:var(--white);">단기 (6~18개월):</strong> 시장 조사 및 소비자 리서치, 유통 파트너 사전 협의, 제품 포트폴리오 한국 특화 기획</div>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="color:#a78bfa;font-weight:800;min-width:24px;">3</span>
+            <div><strong style="color:var(--white);">중기 (18~36개월):</strong> 규제 허용 즉시 공식 출시, 편의점 채널 론칭, 타겟 세그먼트 마케팅 캠페인</div>
+          </div>
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="color:var(--emerald);font-weight:800;min-width:24px;">4</span>
+            <div><strong style="color:var(--white);">장기 (36개월+):</strong> 시장 점유율 확대, 제품 라인업 다각화, 아태지역 한국 허브 전략 실행</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:2rem;border-left-color:var(--teal-400);background:linear-gradient(135deg,rgba(45,212,191,0.06),rgba(21,32,64,0.8));">
+    <p style="font-size:1.05rem;">
+      <strong style="color:var(--teal-300);">최종 전망:</strong> 한국 니코틴 파우치 시장은 현재 태동기지만, 규제 프레임워크 완성과 소비자 교육이 맞물리는 시점에 <strong>빠른 S-커브 성장</strong>을 보일 것으로 예상됩니다. 글로벌 CAGR 30%의 성장 모멘텀을 감안할 때, 선제적으로 시장에 진입하는 플레이어가 한국 NP 시장의 장기 구도를 결정지을 것입니다.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <h3>한국 니코틴 파우치 시장 보고서 2025</h3>
+      <p>
+        본 보고서는 공개된 산업 데이터, 시장 조사 자료 및 규제 동향을 기반으로 작성되었습니다. 시장 규모 및 성장률 수치는 다수의 리서치 기관 데이터를 종합한 추정치이며, 실제 수치와 다를 수 있습니다. 투자 또는 사업 결정 시 전문가 자문을 병행하시기 바랍니다.
+        <br><br>
+        주요 출처: Stellar Market Research, Research and Markets, 6W Research, Tobacco Insider, 2FIRSTS, GSTHR, Snusi.net, BrandB
+      </p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-date">발행일: 2025년 3월</div>
+      <div class="footer-copy">© 2025 Market Intelligence Report</div>
+      <div style="margin-top:0.75rem;">
+        <span class="nav-badge">2025 리포트</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Apply animation to cards and major elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatables = document.querySelectorAll(
+      '.card, .brand-card, .trend-chip, .opp-card, .metric-card, .chart-container, .timeline-item, .swot-cell, .highlight-box, .tax-callout'
+    );
+
+    animatables.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 0.5s ease ${(i % 6) * 0.08}s, transform 0.5s ease ${(i % 6) * 0.08}s`;
+      observer.observe(el);
+    });
+
+    // Animate bar fills
+    const barFills = document.querySelectorAll('.bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const targetWidth = entry.target.style.width;
+          entry.target.style.width = '0%';
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              entry.target.style.transition = 'width 1s ease';
+              entry.target.style.width = targetWidth;
+            }, 200);
+          });
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    barFills.forEach(bar => {
+      const originalWidth = bar.style.width;
+      bar.dataset.width = originalWidth;
+      barObserver.observe(bar);
+    });
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.style.color = '';
+      link.style.background = '';
+      if (link.getAttribute('href') === `#${current}`) {
+        link.style.color = 'var(--gold-300)';
+        link.style.background = 'rgba(212, 168, 67, 0.08)';
+      }
+    });
+  });
+</script>
+</body>
+</html>
