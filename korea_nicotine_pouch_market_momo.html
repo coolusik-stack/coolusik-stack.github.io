@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한국 니코틴 파우치 시장 — Momo Edition</title>
+  <style>
+    :root{
+      --bg:#0b0b10;
+      --ink:#f7f5ee;
+      --muted:#b7b2a7;
+      --line:#2b2a33;
+      --red:#ff5d47;
+      --cream:#f7f0dd;
+      --blue:#6fd3ff;
+      --mint:#93ffc7;
+      --yellow:#ffd45a;
+      --slate:#15151d;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:18px}
+    .hero{
+      min-height:92vh;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      background:#111119;
+    }
+    .hero-left{
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      background:
+        radial-gradient(circle at top left, rgba(255,93,71,.18), transparent 32%),
+        linear-gradient(135deg,#111119 0%,#151520 100%);
+    }
+    .eyebrow{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.76rem;
+      color:var(--muted);
+    }
+    h1{
+      font-size:clamp(3.1rem,8vw,7rem);
+      line-height:.92;
+      margin:.25em 0;
+      letter-spacing:-.06em;
+    }
+    .hero-copy{
+      max-width:720px;
+      font-size:1.08rem;
+      color:#efe9dd;
+    }
+    .jumbo-note{
+      margin-top:24px;
+      display:inline-block;
+      background:var(--red);
+      color:#fff;
+      font-weight:800;
+      padding:12px 16px;
+      border-radius:999px;
+      transform:rotate(-2deg);
+    }
+    .hero-right{
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:18px;
+    }
+    .stat{
+      padding:28px;
+      position:relative;
+      overflow:hidden;
+    }
+    .stat h2{
+      margin:0;
+      font-size:4rem;
+      line-height:.9;
+      letter-spacing:-.05em;
+    }
+    .stat p{margin:10px 0 0;color:#191919;font-weight:700}
+    .cream{background:var(--cream); color:#0d0d0d}
+    .mint{background:var(--mint); color:#0d0d0d}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:26px;
+      background:#12121a;
+    }
+    .span-4{grid-column:span 4}
+    .span-5{grid-column:span 5}
+    .span-6{grid-column:span 6}
+    .span-7{grid-column:span 7}
+    .span-8{grid-column:span 8}
+    .span-12{grid-column:span 12}
+    .big{
+      font-size:clamp(2.5rem,5vw,4.8rem);
+      line-height:.95;
+      letter-spacing:-.05em;
+      margin:0 0 16px;
+    }
+    .quote{
+      font-size:1.6rem;
+      font-weight:800;
+      line-height:1.15;
+      letter-spacing:-.04em;
+    }
+    .muted{color:var(--muted)}
+    .section-tag{
+      display:inline-block;
+      margin-bottom:12px;
+      padding:7px 11px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      font-size:.82rem;
+      color:var(--muted);
+      letter-spacing:.04em;
+    }
+    .bars{margin-top:18px}
+    .bar{
+      margin:16px 0 18px;
+    }
+    .bar-head{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:6px;
+      font-size:.95rem;
+    }
+    .track{
+      background:#252532;
+      height:13px;
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      border-radius:999px;
+    }
+    .red{background:linear-gradient(90deg,#ff6d57,#ffad6d)}
+    .blue{background:linear-gradient(90deg,#63c9ff,#9af0ff)}
+    .yellow{background:linear-gradient(90deg,#ffd44c,#fff1a1)}
+    .mintfill{background:linear-gradient(90deg,#77ffbf,#b9ffe1)}
+    .sticker{
+      display:inline-block;
+      background:var(--yellow);
+      color:#101010;
+      font-weight:900;
+      padding:8px 12px;
+      border-radius:14px;
+      transform:rotate(-3deg);
+      margin:6px 0 14px;
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .pill{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      padding:9px 12px;
+      color:#d4d0c6;
+      font-size:.92rem;
+    }
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    ul{padding-left:20px}
+    li{margin-bottom:8px}
+    .footer{
+      margin-top:18px;
+      padding:24px 28px 40px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      background:#101016;
+    }
+    .sources li{
+      color:var(--muted);
+      font-size:.93rem;
+      margin-bottom:8px;
+    }
+    .center{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .hero-right{grid-template-rows:auto}
+      .span-4,.span-5,.span-6,.span-7,.span-8,.span-12{grid-column:span 12}
+      .split{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="panel hero-left">
+        <div>
+          <div class="eyebrow">Momo edition · Korea Nicotine Pouch Market · 2026</div>
+          <h1>NO<br>SMOKE.<br>NO ASH.<br>NO FREE PASS.</h1>
+          <div class="jumbo-note">규제는 문을 좁히고, 시장은 틈으로 들어온다.</div>
+        </div>
+        <p class="hero-copy">
+          한국의 니코틴 파우치 시장은 “곧 대세”라기보다 <strong>작지만 무시하기 어려운 신시장</strong>이다.
+          냄새도 연기도 없지만, 그렇다고 규제까지 사라지는 건 아니다.
+          오히려 <strong>2026년 이후는 회색지대 종료 + 제도권 진입 시도</strong>가 동시에 일어나는 시기다.
+        </p>
+      </div>
+      <div class="hero-right">
+        <div class="panel stat cream">
+          <div class="eyebrow" style="color:#6a6258">headline number</div>
+          <h2>2026</h2>
+          <p>법적 정의가 바뀌며<br>시장 룰이 리셋되는 해</p>
+        </div>
+        <div class="panel stat mint">
+          <div class="eyebrow" style="color:#275847">momo’s call</div>
+          <h2>NICHE</h2>
+          <p>메인스트림 폭발보다<br>도시형 틈새 카테고리 가능성 우세</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card span-7">
+        <div class="section-tag">01 / What this market really is</div>
+        <h2 class="big">“작다”는 말은<br>“아직 시작도 안 했다”와 다르다.</h2>
+        <p>
+          니코틴 파우치는 현재 한국에서 대중 주류 제품이 아니다. 하지만 그렇다고 존재감이 없는 것도 아니다.
+          핵심은 규모보다 <strong>포지션</strong>이다. 이 카테고리는 우선
+          <strong>“담배를 피우기 어려운 순간의 대체재”</strong>로 시장에 침투할 가능성이 높다.
+        </p>
+        <div class="pill-row">
+          <span class="pill">🚇 이동 중</span>
+          <span class="pill">🏢 실내 환경</span>
+          <span class="pill">👀 냄새/시선 회피</span>
+          <span class="pill">🧩 복수제품 사용자</span>
+        </div>
+      </div>
+      <div class="card span-5 center" style="background:#ff5d47;color:white;">
+        <div>
+          <div class="eyebrow" style="color:#ffd9d3">one-liner</div>
+          <div class="quote">“담배의 다음 왕좌”가 아니라,<br>“상황별 보조 수단”으로 먼저 큰다.</div>
+        </div>
+      </div>
+
+      <div class="card span-4">
+        <div class="section-tag">02 / Demand</div>
+        <div class="sticker">왜 사람들은 시도할까?</div>
+        <ul>
+          <li><strong>연기 없음</strong> — 흔적이 적다</li>
+          <li><strong>냄새 부담 적음</strong> — 사회적 마찰이 낮다</li>
+          <li><strong>새로운 포맷</strong> — 전자담배와 다른 경험</li>
+          <li><strong>복수제품 사용</strong> — 주력 대신 보완재</li>
+        </ul>
+      </div>
+
+      <div class="card span-4">
+        <div class="section-tag">03 / Friction</div>
+        <div class="sticker" style="background:#93ffc7">왜 바로 커지진 않을까?</div>
+        <ul>
+          <li><strong>문화적 낯섦</strong> — 입 안에 넣는 사용법 자체가 생소</li>
+          <li><strong>강한 대체재</strong> — 한국엔 이미 궐련형 전자담배가 강하다</li>
+          <li><strong>규제 강화</strong> — 온라인/광고/청소년 접근 이슈</li>
+          <li><strong>건강 이미지 역풍</strong> — “연기 없음 = 안전” 오해 가능</li>
+        </ul>
+      </div>
+
+      <div class="card span-4" style="background:#141f29">
+        <div class="section-tag">04 / Humor, but factual</div>
+        <h2 class="big" style="font-size:2.5rem">No smoke.<br>Still paperwork.</h2>
+        <p class="muted">
+          이 제품의 매력은 조용함에 있지만, 시장의 운명은 꽤 시끄러운 규제 문서에 달려 있다.
+        </p>
+      </div>
+
+      <div class="card span-8">
+        <div class="section-tag">05 / The tug of war</div>
+        <h2 class="big">수요를 미는 힘 vs 성장을 막는 힘</h2>
+        <div class="bars">
+          <div class="bar">
+            <div class="bar-head"><span>무연·무재 포맷 매력</span><strong>78</strong></div>
+            <div class="track"><div class="fill red" style="width:78%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="bar-head"><span>도시/실내 사용 상황 적합성</span><strong>72</strong></div>
+            <div class="track"><div class="fill blue" style="width:72%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="bar-head"><span>규제 리스크</span><strong>81</strong></div>
+            <div class="track"><div class="fill yellow" style="width:81%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="bar-head"><span>문화적 낯섦 / 사용장벽</span><strong>69</strong></div>
+            <div class="track"><div class="fill mintfill" style="width:69%"></div></div>
+          </div>
+        </div>
+        <p class="muted">숫자는 공개통계가 아닌 전략적 상대강도 표현이다. 차트라기보다 판단의 지도에 가깝다.</p>
+      </div>
+
+      <div class="card span-4">
+        <div class="section-tag">06 / What 2026 changes</div>
+        <h2 class="big" style="font-size:2.6rem">회색지대가 줄어든다.</h2>
+        <p>
+          법 정의가 넓어지면 단기적으로는 시장이 답답해 보일 수 있다. 그러나 장기적으로는
+          <strong>“정체불명의 비공식 시장”에서 “보이는 시장”</strong>으로 이동할 가능성이 커진다.
+        </p>
+      </div>
+
+      <div class="card span-6">
+        <div class="section-tag">07 / Scenario design</div>
+        <h2 class="big">세 가지 미래.<br>가장 그럴듯한 건 가운데.</h2>
+        <div class="split">
+          <div>
+            <h3>보수 시나리오</h3>
+            <p>규제 강화와 문화적 장벽 때문에 극소수 수입/매니아 시장에 머문다.</p>
+            <h3>기준 시나리오</h3>
+            <p><strong>제 판단상 가장 유력.</strong> 합법 유통·과세·브랜드가 정착하며 도시형 니치 카테고리로 안착한다.</p>
+          </div>
+          <div>
+            <h3>공격 시나리오</h3>
+            <p>대형 사업자, 편의 유통, 젊은층 수용이 맞물리며 예상보다 빨리 눈에 띄는 카테고리가 된다.</p>
+            <h3>하지만…</h3>
+            <p class="muted">편의점 입점, 청소년 이슈, 향 규제는 여전히 큰 변수다.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card span-6" style="background:#f7f0dd;color:#111;">
+        <div class="section-tag" style="border-color:rgba(0,0,0,.12);color:#5c554c">08 / Momo’s verdict</div>
+        <h2 class="big" style="font-size:3rem">“조용히 커질 시장”</h2>
+        <p>
+          저는 이 시장을 <strong>폭발적 대중화</strong>보다
+          <strong>조용하지만 확실한 틈새 성장</strong>으로 본다.
+          다시 말해, 한국 니코틴 파우치의 미래는 “다음 담배 왕”이 아니라
+          <strong>“상황별 대체 도구”의 세련된 포지션</strong>에 더 가깝다.
+        </p>
+      </div>
+
+      <div class="card span-12">
+        <div class="section-tag">09 / Why this matters for business</div>
+        <h2 class="big">먼저 이기는 쪽은<br>가장 멋진 브랜드보다<br>가장 빨리 합법화에 적응한 쪽일 수 있다.</h2>
+        <p>
+          한국 시장에선 마케팅 감각만으로 부족하다. 유통, 과세, 연령 규제, 사용 교육, 맛/강도 포트폴리오,
+          그리고 “이걸 왜 써야 하는지”에 대한 맥락 설계가 함께 움직여야 한다.
+          화려한 캠페인만으로는 부족하고, 그렇다고 제품만 내밀어도 부족하다. 결국 승부는
+          <strong>브랜드 + 규제 적응 + 유통 실행</strong>의 삼각형에서 난다.
+        </p>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="section-tag">Sources / kept short, stayed serious</div>
+      <ul class="sources">
+        <li>국가법령정보센터 — 담배사업법(시행 2026.4.24): https://www.law.go.kr/lsInfoP.do?lsiSeq=280343&viewCls=lsRvsDocInfoR</li>
+        <li>KHEPI 웹진 — 담배 정의 개정과 규제 사각지대 해설: https://webzine.khepi.or.kr/vol67/html/cnt_1_2.jsp</li>
+        <li>대한민국 정책브리핑 — 2026년부터 달라지는 제도: https://www.korea.kr/fcatalog/access/ecatalogt.jsp?Dir=1199&callmode=normal&catimage=&eclang=ko&start=382&um=s</li>
+        <li>금연길라잡이 — 국내 흡연 및 복수제품 사용 변화: https://www.nosmokeguide.go.kr/</li>
+        <li>KT&amp;G — Oral Nicotine 중심 투자 전략 공개 자료</li>
+      </ul>
+      <p class="muted">
+        이 페이지는 WeTransfer 스타일의 대담한 편집 감각을 참고해 재구성한 Momo 버전이다.
+        정보는 단단하게, 표현은 대담하게, 톤은 살짝 장난스럽게.
+      </p>
+    </section>
+  </div>
+</body>
+</html>
