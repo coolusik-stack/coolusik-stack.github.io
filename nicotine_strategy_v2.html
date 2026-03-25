@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>니코틴 파우치 전략 기획서 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0C0C0C;
+  --white: #F5F2EE;
+  --blue: #4361EE;
+  --blue-light: #C5CEFF;
+  --green: #B5D99C;
+  --green-dark: #2D5A45;
+  --yellow: #EDD94C;
+  --coral: #E8553E;
+  --purple: #C77DFF;
+  --purple-light: #E8D5FF;
+  --gray: #888;
+  --border: rgba(255,255,255,0.12);
+  --font: 'Inter', 'Noto Sans KR', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── TOP BAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 32px;
+  background: rgba(12,12,12,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.topbar-brand {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--white);
+}
+.topbar-pill {
+  background: var(--yellow); color: var(--black);
+  font-size: 9px; font-weight: 800; letter-spacing: 1px;
+  padding: 3px 10px; border-radius: 100px;
+  text-transform: uppercase;
+}
+.topbar-nav { display: flex; gap: 4px; }
+.topbar-nav a {
+  font-size: 11px; color: rgba(255,255,255,0.4);
+  text-decoration: none; padding: 6px 12px;
+  border-radius: 100px; transition: all 0.2s;
+  font-weight: 500;
+}
+.topbar-nav a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--yellow); overflow: hidden;
+  padding: 10px 0; white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 30s linear infinite;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--black);
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh; background: var(--black);
+  display: flex; flex-direction: column;
+  padding: 120px 60px 60px;
+  position: relative; overflow: hidden;
+}
+.cover-pills {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+}
+.pill-float {
+  position: absolute;
+  border-radius: 100px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  animation: floatPill 8s ease-in-out infinite;
+}
+@keyframes floatPill {
+  0%, 100% { transform: translateY(0) rotate(var(--rot)); }
+  50% { transform: translateY(-12px) rotate(var(--rot)); }
+}
+
+.cover-main { flex: 1; display: flex; flex-direction: column; justify-content: center; max-width: 900px; }
+.cover-eyebrow {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 40px;
+}
+.cover-eyebrow-pill {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.5);
+}
+.cover-eyebrow-pill.active { background: var(--coral); border-color: var(--coral); color: white; }
+
+.cover-headline {
+  font-size: clamp(52px, 8vw, 110px);
+  font-weight: 900; line-height: 0.95;
+  color: var(--white); letter-spacing: -4px;
+  text-transform: uppercase;
+}
+.cover-headline .hl-yellow { color: var(--yellow); }
+.cover-headline .hl-green { color: var(--green); }
+
+.cover-sub {
+  margin-top: 36px; font-size: 17px; line-height: 1.75;
+  color: rgba(255,255,255,0.45); max-width: 560px; font-weight: 400;
+}
+
+.cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding-top: 60px; border-top: 1px solid var(--border);
+}
+.cover-stat { text-align: center; }
+.cover-stat-num {
+  font-size: 40px; font-weight: 900; color: var(--white);
+  letter-spacing: -2px; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cover-stat-num.yellow { color: var(--yellow); }
+.cover-stat-num.coral { color: var(--coral); }
+.cover-stat-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+  margin-top: 6px;
+}
+
+/* ── SECTION COMMON ── */
+.section { padding: 100px 60px; }
+.section-dark { background: var(--black); color: var(--white); }
+.section-light { background: var(--white); color: var(--black); }
+.section-blue { background: var(--blue); color: var(--white); }
+.section-cream { background: #EDE8E0; color: var(--black); }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 10px; font-weight: 800; letter-spacing: 3px;
+  text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+  border: 1px solid currentColor; opacity: 0.5; margin-bottom: 40px;
+}
+.section-dark .section-tag { color: var(--white); }
+.section-light .section-tag { color: var(--black); }
+.section-blue .section-tag { color: var(--white); }
+.section-cream .section-tag { color: var(--black); }
+
+.section-headline {
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -2px;
+}
+
+/* inline pill highlight */
+.hl {
+  display: inline-block; padding: 2px 12px; border-radius: 100px;
+  font-style: normal;
+}
+.hl-y { background: var(--yellow); color: var(--black); }
+.hl-b { background: var(--blue); color: white; }
+.hl-b-light { background: var(--blue-light); color: var(--blue); }
+.hl-g { background: var(--green); color: var(--black); }
+.hl-c { background: var(--coral); color: white; }
+.hl-p { background: var(--purple); color: white; }
+.hl-p-light { background: var(--purple-light); color: #7B2FBE; }
+
+/* ── TABLE OF CONTENTS ── */
+.toc-list { margin-top: 48px; display: flex; flex-direction: column; gap: 3px; }
+.toc-item {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 24px; border-radius: 100px;
+  border: 1px solid var(--border);
+  text-decoration: none; color: var(--white);
+  transition: all 0.25s; cursor: pointer;
+}
+.toc-item:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.25); }
+.toc-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  color: rgba(255,255,255,0.35); min-width: 24px;
+}
+.toc-label { font-size: 15px; font-weight: 600; flex: 1; }
+.toc-arrow {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}
+.toc-item:hover .toc-arrow { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.toc-item.accent { border-color: var(--coral); }
+.toc-item.accent .toc-num { color: var(--coral); }
+
+/* ── CHAPTER BREAK ── */
+.chapter-break {
+  padding: 80px 60px; border-bottom: 1px solid var(--border);
+}
+.chapter-break-inner {
+  display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap;
+}
+.chapter-num {
+  font-size: 100px; font-weight: 900; line-height: 1;
+  letter-spacing: -6px; color: rgba(255,255,255,0.1);
+  font-variant-numeric: tabular-nums;
+}
+.chapter-title {
+  font-size: clamp(36px, 5vw, 72px); font-weight: 900;
+  line-height: 1; letter-spacing: -3px; color: var(--white);
+  text-transform: uppercase;
+}
+
+/* ── IMAGE SECTION ── */
+.img-section {
+  width: 100%; height: 480px; position: relative; overflow: hidden;
+}
+.img-section img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(12,12,12,0.6) 0%, transparent 60%);
+}
+.img-caption {
+  position: absolute; bottom: 32px; left: 60px; right: 60px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.img-caption-text {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7);
+  letter-spacing: 1px; text-transform: uppercase;
+  background: rgba(0,0,0,0.5); padding: 8px 16px; border-radius: 100px;
+  backdrop-filter: blur(8px);
+}
+
+/* ── STAT BUBBLE ── */
+.bubbles-section {
+  display: flex; gap: 40px; align-items: center;
+  margin: 60px 0; flex-wrap: wrap;
+}
+.bubble {
+  border-radius: 50%; border: 1.5px solid currentColor;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.bubble:hover { transform: scale(1.05); }
+.bubble-xl { width: 240px; height: 240px; }
+.bubble-lg { width: 180px; height: 180px; }
+.bubble-md { width: 140px; height: 140px; }
+.bubble-sm { width: 100px; height: 100px; }
+.bubble-num {
+  font-size: clamp(28px, 4vw, 52px); font-weight: 900;
+  letter-spacing: -2px; line-height: 1;
+}
+.bubble-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; margin-top: 6px; opacity: 0.7;
+  padding: 0 12px; line-height: 1.4;
+}
+.bubble.blue { color: var(--blue); }
+.bubble.green { color: #3D8B5A; }
+.bubble.coral { color: var(--coral); }
+.bubble.yellow { color: #C9A800; }
+.bubble.purple { color: #8A44CE; }
+.bubble.white { color: var(--white); }
+.bubble.white .bubble-num { color: var(--white); }
+.bubble.white .bubble-label { color: rgba(255,255,255,0.6); }
+
+/* ── MOAT CARDS ── */
+.moat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 3px; margin: 60px 0; background: rgba(255,255,255,0.08);
+}
+.moat-card {
+  background: var(--black); padding: 40px 32px;
+  transition: background 0.25s;
+}
+.moat-card:hover { background: #1a1a1a; }
+.moat-card-pill {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.moat-card-title { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 12px; line-height: 1.25; }
+.moat-card-body { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+/* ── VERIFY SECTION ── */
+.verify-list { margin: 60px 0; display: flex; flex-direction: column; gap: 3px; }
+.verify-item {
+  display: grid; grid-template-columns: 60px 1fr auto;
+  gap: 24px; align-items: start;
+  padding: 36px 32px; background: var(--white);
+  border-radius: 0; transition: background 0.2s;
+}
+.verify-item:hover { background: #F0EDE8; }
+.verify-badge {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 900; flex-shrink: 0;
+}
+.ok-badge { background: var(--green); color: var(--black); }
+.warn-badge { background: var(--yellow); color: var(--black); }
+.risk-badge { background: var(--coral); color: white; }
+.verify-content {}
+.verify-claim { font-size: 17px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+.verify-text { font-size: 14px; color: #555; line-height: 1.75; }
+.verify-verdict-pill {
+  padding: 6px 16px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; white-space: nowrap; align-self: flex-start;
+  margin-top: 4px;
+}
+.pill-ok { background: var(--green); color: var(--black); }
+.pill-warn { background: var(--yellow); color: var(--black); }
+.pill-risk { background: var(--coral); color: white; }
+
+/* ── RISK SECTION ── */
+.risk-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3px; background: #1a1a1a; margin: 60px 0;
+}
+.risk-card {
+  padding: 40px 36px; background: var(--black);
+  transition: background 0.2s;
+}
+.risk-card:hover { background: #141414; }
+.risk-level-pill {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  font-size: 9px; font-weight: 900; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.risk-high { background: var(--coral); color: white; }
+.risk-mid { background: var(--yellow); color: var(--black); }
+.risk-low { background: var(--green); color: var(--black); }
+.risk-title { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+.risk-body { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+
+/* ── STRATEGY ITEMS ── */
+.strategy-list { margin: 60px 0; display: flex; flex-direction: column; }
+.strategy-item {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 0; border-top: 1px solid #E0DDD8;
+  transition: background 0.2s;
+}
+.strategy-item:last-child { border-bottom: 1px solid #E0DDD8; }
+.strategy-item:hover { background: #EEEAE3; }
+.strategy-num-col {
+  padding: 48px 32px; border-right: 1px solid #E0DDD8;
+  display: flex; align-items: flex-start;
+}
+.strategy-num {
+  font-size: 48px; font-weight: 900; letter-spacing: -3px;
+  color: rgba(0,0,0,0.12); line-height: 1;
+}
+.strategy-content { padding: 48px 40px; }
+.strategy-pill {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.strategy-title { font-size: 22px; font-weight: 800; color: var(--black); margin-bottom: 12px; line-height: 1.3; }
+.strategy-body { font-size: 15px; color: #555; line-height: 1.8; }
+
+/* ── TIMELINE ── */
+.timeline { margin: 60px 0; }
+.timeline-item {
+  display: grid; grid-template-columns: 160px 1fr;
+  border-top: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.timeline-item:last-child { border-bottom: 1px solid var(--border); }
+.timeline-item:hover { background: rgba(255,255,255,0.04); }
+.timeline-period-col {
+  padding: 40px 32px; border-right: 1px solid var(--border);
+}
+.timeline-period-pill {
+  display: inline-block; padding: 5px 14px; border-radius: 100px;
+  font-size: 10px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.timeline-date {
+  font-size: 11px; color: rgba(255,255,255,0.3);
+  margin-top: 8px; letter-spacing: 1px; font-weight: 500;
+}
+.timeline-content { padding: 40px 40px; }
+.timeline-title { font-size: 19px; font-weight: 800; color: var(--white); margin-bottom: 20px; line-height: 1.3; }
+.timeline-tasks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.timeline-tasks li {
+  font-size: 14px; color: rgba(255,255,255,0.5);
+  padding-left: 20px; position: relative; line-height: 1.65;
+}
+.timeline-tasks li::before {
+  content: '→'; position: absolute; left: 0;
+  color: rgba(255,255,255,0.2); font-size: 12px; top: 2px;
+}
+
+/* ── BIG STATEMENT ── */
+.big-statement {
+  padding: 100px 60px; background: var(--blue);
+}
+.big-statement-text {
+  font-size: clamp(26px, 3.5vw, 52px);
+  font-weight: 800; line-height: 1.4;
+  color: white; max-width: 860px; letter-spacing: -1px;
+}
+
+/* ── PHOTO GRID ── */
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.photo-cell { height: 400px; position: relative; overflow: hidden; }
+.photo-cell img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+.photo-cell-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(12,12,12,0.8) 0%, transparent 50%);
+}
+.photo-cell-label {
+  position: absolute; bottom: 24px; left: 24px;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+}
+
+/* ── CLOSING ── */
+.closing {
+  min-height: 100vh; background: var(--black);
+  display: flex; flex-direction: column;
+  justify-content: space-between; padding: 120px 60px 60px;
+}
+.closing-headline {
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 900; line-height: 0.95;
+  color: var(--white); letter-spacing: -4px;
+  text-transform: uppercase; max-width: 800px;
+}
+.closing-pills { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 48px; }
+.closing-pill {
+  padding: 12px 24px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5);
+}
+.closing-footer {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-top: 1px solid var(--border); padding-top: 32px; margin-top: 80px;
+}
+.closing-brand {
+  font-size: 11px; font-weight: 800; letter-spacing: 4px;
+  text-transform: uppercase; color: rgba(255,255,255,0.25);
+}
+
+/* ── COUNTER SECTION ── */
+.counter-section {
+  background: var(--black); padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.counter-cell {
+  padding: 80px 60px; border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.counter-cell:nth-child(even) { border-right: none; }
+.counter-num {
+  font-size: clamp(56px, 8vw, 100px); font-weight: 900;
+  line-height: 1; letter-spacing: -4px;
+  color: var(--white); font-variant-numeric: tabular-nums;
+}
+.counter-num .unit { font-size: 0.5em; letter-spacing: -1px; opacity: 0.6; }
+.counter-label {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.35);
+  margin-top: 12px; letter-spacing: 1px; line-height: 1.5;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@media (max-width: 768px) {
+  .section { padding: 60px 24px; }
+  .cover { padding: 90px 24px 40px; }
+  .moat-grid, .risk-grid, .counter-section, .photo-grid { grid-template-columns: 1fr; }
+  .strategy-item, .timeline-item { grid-template-columns: 1fr; }
+  .strategy-num-col, .timeline-period-col { border-right: none; border-bottom: 1px solid #E0DDD8; padding: 20px 24px; }
+  .topbar-nav { display: none; }
+  .bubbles-section { justify-content: center; }
+  .verify-item { grid-template-columns: 40px 1fr; }
+  .verify-verdict-pill { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-brand">
+    NP Strategy
+    <span class="topbar-pill">2026</span>
+  </div>
+  <div class="topbar-nav">
+    <a href="#market">시장</a>
+    <a href="#moat">강점</a>
+    <a href="#truth">검증</a>
+    <a href="#risk">리스크</a>
+    <a href="#strategy">전략</a>
+    <a href="#action">실행</a>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" style="margin-top: 49px;">
+  <div class="ticker-inner">
+    NICOTINE POUCH STRATEGY 2026 &nbsp;·&nbsp; D-33 UNTIL REGULATION &nbsp;·&nbsp; EUROPEAN SUPPLY SECURED &nbsp;·&nbsp; SYNTHETIC NICOTINE &nbsp;·&nbsp; INDIE BRAND PLAYBOOK &nbsp;·&nbsp; WIN THE NEW RULES &nbsp;·&nbsp;&nbsp;
+    NICOTINE POUCH STRATEGY 2026 &nbsp;·&nbsp; D-33 UNTIL REGULATION &nbsp;·&nbsp; EUROPEAN SUPPLY SECURED &nbsp;·&nbsp; SYNTHETIC NICOTINE &nbsp;·&nbsp; INDIE BRAND PLAYBOOK &nbsp;·&nbsp; WIN THE NEW RULES &nbsp;·&nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- ── COVER ── -->
+<section class="cover">
+  <!-- floating pill shapes -->
+  <div class="cover-pills">
+    <div class="pill-float" style="width:180px;height:72px;top:15%;left:70%;--rot:-18deg;animation-delay:0s;"></div>
+    <div class="pill-float" style="width:120px;height:48px;top:30%;left:80%;--rot:8deg;animation-delay:1.5s;"></div>
+    <div class="pill-float" style="width:220px;height:88px;top:55%;left:65%;--rot:-5deg;animation-delay:3s;background:rgba(237,217,76,0.04);"></div>
+    <div class="pill-float" style="width:90px;height:90px;top:70%;left:75%;--rot:0deg;animation-delay:2s;border-radius:50%;"></div>
+    <div class="pill-float" style="width:140px;height:56px;top:80%;left:55%;--rot:22deg;animation-delay:0.8s;"></div>
+    <div class="pill-float" style="width:60px;height:60px;top:20%;left:60%;--rot:0deg;animation-delay:4s;border-radius:50%;background:rgba(232,85,62,0.08);border-color:rgba(232,85,62,0.3);"></div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-eyebrow reveal">
+      <span class="cover-eyebrow-pill active">D-33</span>
+      <span class="cover-eyebrow-pill">Confidential</span>
+      <span class="cover-eyebrow-pill">March 2026</span>
+    </div>
+
+    <div class="cover-headline reveal reveal-delay-1">
+      WIN<br>THE <span class="hl-yellow">NEW</span><br>RULES<span class="hl-green" style="font-size:0.4em;vertical-align:super;letter-spacing:-1px;padding:4px 10px">.</span>
+    </div>
+
+    <p class="cover-sub reveal reveal-delay-2">
+      한국 담배법 개정 D-33. 합성니코틴 파우치 시장의 변곡점에서
+      인디 브랜드가 대기업을 이기는 냉정한 전략 기획서.
+    </p>
+  </div>
+
+  <div class="cover-bottom reveal reveal-delay-3">
+    <div class="cover-stat">
+      <div class="cover-stat-num yellow counter" data-target="33">33</div>
+      <div class="cover-stat-label">Days to<br>Regulation</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">42%</div>
+      <div class="cover-stat-label">Global CAGR<br>Nicotine Pouch</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num coral">2030</div>
+      <div class="cover-stat-label">EU Factory<br>Capacity Full</div>
+    </div>
+    <div class="cover-stat">
+      <div class="cover-stat-num">6</div>
+      <div class="cover-stat-label">Competitive<br>Moats Secured</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TABLE OF CONTENTS ── -->
+<section class="section section-dark">
+  <div class="section-tag reveal">Index</div>
+  <h2 class="section-headline reveal reveal-delay-1" style="color:var(--white);">전략 기획서<br>목차</h2>
+
+  <div class="toc-list reveal reveal-delay-2">
+    <a href="#market" class="toc-item">
+      <span class="toc-num">01</span>
+      <span class="toc-label">시장 현황 — 한국 니코틴 파우치 시장의 변곡점</span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#moat" class="toc-item">
+      <span class="toc-num">02</span>
+      <span class="toc-label">경쟁 우위 — 당신이 이미 가진 6개의 해자(Moat)</span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#truth" class="toc-item accent">
+      <span class="toc-num" style="color:var(--coral)">03</span>
+      <span class="toc-label">냉정한 검증 — 당신의 가정, 사실인가?</span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#risk" class="toc-item accent">
+      <span class="toc-num" style="color:var(--coral)">04</span>
+      <span class="toc-label">리스크 — 무시하면 죽는 5가지 위협</span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#strategy" class="toc-item">
+      <span class="toc-num">05</span>
+      <span class="toc-label">전략 — 인디 브랜드의 필살 플레이북</span>
+      <span class="toc-arrow">→</span>
+    </a>
+    <a href="#action" class="toc-item">
+      <span class="toc-num">06</span>
+      <span class="toc-label">90일 실행 계획 — 지금 당장 시작해야 할 것들</span>
+      <span class="toc-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── CHAPTER 01 ── -->
+<div id="market" class="chapter-break section-dark">
+  <div class="chapter-break-inner">
+    <div class="chapter-num">01</div>
+    <div>
+      <div class="chapter-title">MARKET</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">한국 니코틴 파우치 시장 현황</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARKET PHOTO -->
+<div class="img-section">
+  <img src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1600&q=80" alt="Seoul Korea" loading="lazy">
+  <div class="img-overlay"></div>
+  <div class="img-caption">
+    <span class="img-caption-text">Seoul, Korea · 2026</span>
+    <span class="img-caption-text">규제 변화의 진원지</span>
+  </div>
+</div>
+
+<!-- MARKET CONTENT -->
+<section class="section section-light">
+  <div class="section-tag reveal">01 — Situation</div>
+  <h2 class="section-headline reveal reveal-delay-1">
+    한국 시장은 지금<br>
+    <em class="hl hl-b">변곡점</em>에 있다.
+  </h2>
+  <p class="reveal reveal-delay-2" style="font-size:17px;line-height:1.85;color:#444;max-width:680px;margin-top:28px;">
+    합성니코틴 파우치는 2024년까지 담배 규제의 사각지대에 있었다. 편의점·온라인에서 자유롭게 판매됐고, 광고·마케팅에 제약이 없었다. 그러나 <em class="hl hl-c">2026년 4월 24일</em>부터 <strong>담배사업법 개정안</strong>이 시행되며 모든 것이 바뀐다.
+  </p>
+
+  <div class="bubbles-section reveal reveal-delay-2">
+    <div class="bubble bubble-xl blue">
+      <div class="bubble-num">₩2.1T</div>
+      <div class="bubble-label">한국 담배<br>시장 규모</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div class="bubble bubble-lg green">
+        <div class="bubble-num">42%</div>
+        <div class="bubble-label">글로벌<br>CAGR</div>
+      </div>
+      <div class="bubble bubble-md coral">
+        <div class="bubble-num">D-33</div>
+        <div class="bubble-label">규제<br>D-DAY</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div class="bubble bubble-md yellow">
+        <div class="bubble-num">0</div>
+        <div class="bubble-label">제도권<br>인디 브랜드</div>
+      </div>
+      <div class="bubble bubble-sm purple" style="align-self:flex-end;">
+        <div class="bubble-num" style="font-size:22px;">2030</div>
+        <div class="bubble-label" style="font-size:9px;">EU 물량<br>매진</div>
+      </div>
+    </div>
+    <div style="max-width:300px;padding-left:20px;">
+      <p style="font-size:15px;line-height:1.8;color:#555;">
+        이 변화는 <strong>위기</strong>이면서 동시에 <strong>기회</strong>다. 규제 이전에 자리를 잡은 플레이어가 이후의 높은 진입장벽으로 보호받는 구조가 만들어진다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- D-DAY COUNTER GRID -->
+<div class="counter-section">
+  <div class="counter-cell">
+    <div class="counter-num" style="color:var(--coral);">33<span class="unit">일</span></div>
+    <div class="counter-label">담배사업법 개정 시행까지<br>2026년 4월 24일</div>
+  </div>
+  <div class="counter-cell" style="border-right:none;">
+    <div class="counter-num" style="color:var(--yellow);">₩2.1<span class="unit">T</span></div>
+    <div class="counter-label">한국 연간 담배 시장 규모<br>니코틴 파우치 카테고리 급성장 중</div>
+  </div>
+  <div class="counter-cell" style="border-bottom:none;">
+    <div class="counter-num" style="color:var(--green);">42<span class="unit">%</span></div>
+    <div class="counter-label">글로벌 니코틴 파우치 CAGR<br>가장 빠르게 성장하는 니코틴 카테고리</div>
+  </div>
+  <div class="counter-cell" style="border-right:none;border-bottom:none;">
+    <div class="counter-num" style="color:var(--blue-light);">2030</div>
+    <div class="counter-label">유럽 주요 공장 생산 물량<br>이미 선점 완료 (파트너 정보)</div>
+  </div>
+</div>
+
+<!-- BIG STATEMENT 1 -->
+<div class="big-statement">
+  <div class="big-statement-text reveal">
+    "규제는 진입장벽이다. 먼저 들어온 사람에게는 <em class="hl hl-y">해자(Moat)</em>가 되고, 나중에 들어오려는 사람에게는 <em class="hl" style="background:rgba(255,255,255,0.15);color:white;">벽</em>이 된다."
+  </div>
+</div>
+
+<!-- ── CHAPTER 02 ── -->
+<div id="moat" class="chapter-break section-dark">
+  <div class="chapter-break-inner">
+    <div class="chapter-num">02</div>
+    <div>
+      <div class="chapter-title">YOUR EDGE</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">당신이 이미 가진 경쟁 우위</div>
+    </div>
+  </div>
+</div>
+
+<!-- MOAT PHOTO -->
+<div class="img-section">
+  <img src="https://images.unsplash.com/photo-1529313780224-1a12b68bed16?auto=format&fit=crop&w=1600&q=80" alt="European Factory" loading="lazy">
+  <div class="img-overlay"></div>
+  <div class="img-caption">
+    <span class="img-caption-text">Europe · Manufacturing</span>
+    <span class="img-caption-text">2030년까지 생산 물량 선점</span>
+  </div>
+</div>
+
+<!-- MOAT CARDS -->
+<section class="section section-dark">
+  <div class="section-tag reveal" style="color:rgba(255,255,255,0.4);border-color:rgba(255,255,255,0.15);">02 — Competitive Moat</div>
+  <h2 class="section-headline reveal reveal-delay-1" style="color:var(--white);">
+    6개의 해자가<br>이미 만들어져 있다.
+  </h2>
+
+  <div class="moat-grid reveal reveal-delay-2">
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(181,217,156,0.15);color:var(--green);">Supply Chain</div>
+      <div class="moat-card-title">유럽 공급망 선점</div>
+      <div class="moat-card-body">주요 유럽 니코틴 파우치 공장들은 2030년까지 생산 물량이 대부분 선점. 신규 진입자가 동일한 품질의 소스를 확보하기 매우 어려운 구조.</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(67,97,238,0.2);color:var(--blue-light);">Customs</div>
+      <div class="moat-card-title">담배 통관 노하우</div>
+      <div class="moat-card-body">담배 카테고리 수입·통관은 일반 소비재 대비 절차가 복잡하고 경험이 필수. 4월 이후 경험 없는 경쟁자는 첫 통관에서만 수개월을 허비한다.</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(237,217,76,0.15);color:var(--yellow);">Positioning</div>
+      <div class="moat-card-title">합성니코틴 포지셔닝</div>
+      <div class="moat-card-body">담배 유래 성분이 없어 "클린" 이미지를 원하는 소비자층에 소구 가능. 품질 균일성과 원가 안정성에서 천연 니코틴 대비 강점.</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(232,85,62,0.15);color:var(--coral);">Barrier</div>
+      <div class="moat-card-title">중국발 경쟁 차단</div>
+      <div class="moat-card-body">중국 정부의 니코틴 수출 통제 강화로 중국 소싱 경쟁자 진입이 구조적으로 제한. 유럽 소싱 루트 보유 플레이어에게 지속적 우위.</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(199,125,255,0.15);color:var(--purple);">Pricing</div>
+      <div class="moat-card-title">가격 경쟁력</div>
+      <div class="moat-card-body">파트너와 확보된 공급가는 초기 마진 확보와 가격 전쟁에서의 방어력을 동시에 제공. 소량 주문 경쟁자 대비 규모의 경제 우위.</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-card-pill" style="background:rgba(181,217,156,0.15);color:var(--green);">Timing</div>
+      <div class="moat-card-title">선점 타이밍</div>
+      <div class="moat-card-body">지금 판매 중이라는 것 자체가 브랜드 인지도 선점의 의미. 규제 이전에 형성된 고객 관계와 채널은 규제 이후에도 유효하게 작동.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHAPTER 03 ── -->
+<div id="truth" class="chapter-break" style="background:#0C0C0C;border-bottom:1px solid rgba(232,85,62,0.3);">
+  <div class="chapter-break-inner">
+    <div class="chapter-num" style="color:rgba(232,85,62,0.15);">03</div>
+    <div>
+      <div class="chapter-title" style="color:var(--coral);">COLD TRUTH</div>
+      <div style="font-size:13px;color:rgba(232,85,62,0.4);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">냉정한 검증 — 당신의 가정은 사실인가?</div>
+    </div>
+  </div>
+</div>
+
+<!-- VERIFY -->
+<section class="section section-light" style="padding-bottom:0;">
+  <div class="section-tag reveal">03 — Assumption Verification</div>
+  <h2 class="section-headline reveal reveal-delay-1">
+    당신의 판단,<br>
+    <em class="hl hl-c">냉정하게</em> 검증했다.
+  </h2>
+  <p class="reveal reveal-delay-2" style="font-size:16px;line-height:1.8;color:#555;max-width:600px;margin-top:24px;">
+    긍정적 가정만 믿으면 위험하다. 아래는 각 전제 조건에 대한 팩트체크다.
+  </p>
+</section>
+
+<div class="verify-list" style="margin:0;">
+  <div class="verify-item reveal">
+    <div class="verify-badge ok-badge">✓</div>
+    <div class="verify-content">
+      <div class="verify-claim">유럽 공급망이 안정적이다</div>
+      <div class="verify-text">유효. 단, 파트너의 "2030년 물량 매진" 발언은 영업 과장일 수 있음. 실제로 MOU나 계약서로 확보된 물량인지 서면으로 재확인 필수. 구두 약속은 리스크다.</div>
+    </div>
+    <span class="verify-verdict-pill pill-ok">VALID ✓</span>
+  </div>
+  <div class="verify-item reveal reveal-delay-1">
+    <div class="verify-badge ok-badge">✓</div>
+    <div class="verify-content">
+      <div class="verify-claim">중국 수출 통제가 경쟁자를 막는다</div>
+      <div class="verify-text">유효. 중국의 니코틴 원료 수출 규제는 실제 강화 추세. 단, 동남아(베트남, 인도네시아) OEM 우회 루트가 있어 완전 차단은 아님. 6~12개월 지연 효과로 봐야 함.</div>
+    </div>
+    <span class="verify-verdict-pill pill-ok">VALID ✓</span>
+  </div>
+  <div class="verify-item reveal reveal-delay-2">
+    <div class="verify-badge warn-badge">!</div>
+    <div class="verify-content">
+      <div class="verify-claim">담배 카테고리 편입이 우리에게 유리하다</div>
+      <div class="verify-text">절반만 유효. 통관 경험은 강점이나, 담배세 적용으로 소비자가 체감하는 가격이 인상될 수 있음. 세금 구조(개별소비세+담배소비세+부가세) 아래서 마진 시뮬레이션이 선행되어야 한다.</div>
+    </div>
+    <span class="verify-verdict-pill pill-warn">PARTIAL !</span>
+  </div>
+  <div class="verify-item reveal reveal-delay-3">
+    <div class="verify-badge warn-badge">!</div>
+    <div class="verify-content">
+      <div class="verify-claim">가격 경쟁력이 있다</div>
+      <div class="verify-text">현재는 유효. 그러나 담배세 부과 이후 최종 소비자가는 재계산 필요. ZYN·VELO 등 글로벌 브랜드는 규모의 경제로 세후에도 원가 경쟁력을 가질 수 있음. 가격 전략 즉시 재검토 필수.</div>
+    </div>
+    <span class="verify-verdict-pill pill-warn">REVIEW !</span>
+  </div>
+  <div class="verify-item reveal">
+    <div class="verify-badge risk-badge">✕</div>
+    <div class="verify-content">
+      <div class="verify-claim">인디 브랜드가 대기업과 경쟁할 수 있다</div>
+      <div class="verify-text">가장 큰 리스크. PMI(ZYN), BAT(VELO)는 이미 한국에 담배 유통망을 보유. 규제 편입 직후 기존 담배 유통망으로 밀어넣기 가능. 마케팅 예산에서도 비교 불가. 대기업과 같은 링에서 싸우면 진다.</div>
+    </div>
+    <span class="verify-verdict-pill pill-risk">RISK ✕</span>
+  </div>
+  <div class="verify-item reveal reveal-delay-1">
+    <div class="verify-badge risk-badge">✕</div>
+    <div class="verify-content">
+      <div class="verify-claim">온라인·SNS 마케팅으로 브랜드를 계속 키울 수 있다</div>
+      <div class="verify-text">4월 24일 이후 담배 광고 규제 적용. 인스타그램, 유튜브, 인플루언서 협찬이 법적으로 매우 제한됨. D-33 지금 당장 브랜드 자산(팔로워, 이메일 리스트, 커뮤니티)을 최대한 구축해야 하는 이유다.</div>
+    </div>
+    <span class="verify-verdict-pill pill-risk">URGENT ✕</span>
+  </div>
+</div>
+
+<!-- ── CHAPTER 04 ── -->
+<div id="risk" class="chapter-break" style="background:var(--black);">
+  <div class="chapter-break-inner">
+    <div class="chapter-num">04</div>
+    <div>
+      <div class="chapter-title">RISK</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">무시하면 죽는 위협들</div>
+    </div>
+  </div>
+</div>
+
+<section class="section section-dark" style="padding-bottom:0;">
+  <div class="section-tag reveal" style="color:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.1);">04 — Risk Matrix</div>
+  <h2 class="section-headline reveal reveal-delay-1" style="color:var(--white);">
+    5가지 리스크를<br>과소평가하지 마라.
+  </h2>
+</section>
+
+<div class="risk-grid" style="margin:0;">
+  <div class="risk-card reveal" style="grid-column:1/-1;border-bottom:1px solid #1a1a1a;">
+    <span class="risk-level-pill risk-high">HIGH RISK — 즉시 대응</span>
+    <div class="risk-title">담배세 마진 충격 — 지금 당장 시뮬레이션하라</div>
+    <div class="risk-body">담배 카테고리 편입 시 개별소비세 + 담배소비세 + 건강증진부담금 + 부가세가 복합 적용. 현재 판매가 기준으로 세금 시뮬레이션을 즉시 실행하라. 가격 인상 없이 마진을 유지할 수 있는지 확인 필수. 이것이 모든 전략의 선행 조건이다.</div>
+  </div>
+  <div class="risk-card reveal reveal-delay-1" style="border-right:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;">
+    <span class="risk-level-pill risk-high">HIGH RISK</span>
+    <div class="risk-title">글로벌 빅브랜드의 채널 장악</div>
+    <div class="risk-body">PMI, BAT, JTI는 이미 전국 담배소매인 채널을 보유. 규제 편입 직후 ZYN·VELO를 기존 담배 유통망으로 밀어넣을 수 있음. 인디 브랜드가 동일 채널에서 경쟁하면 진열 공간 싸움에서 반드시 진다.</div>
+  </div>
+  <div class="risk-card reveal reveal-delay-2" style="border-bottom:1px solid #1a1a1a;">
+    <span class="risk-level-pill risk-mid">MEDIUM RISK</span>
+    <div class="risk-title">광고 규제로 인한 마케팅 블랙아웃</div>
+    <div class="risk-body">4월 24일 이후 SNS 광고, 인플루언서 협찬, 이벤트 프로모션 모두 담배 광고 규제 대상. 지금 공격적으로 브랜드 커뮤니티를 구축해야 광고 없이도 입소문이 돌 수 있다.</div>
+  </div>
+  <div class="risk-card reveal reveal-delay-1" style="border-right:1px solid #1a1a1a;">
+    <span class="risk-level-pill risk-mid">MEDIUM RISK</span>
+    <div class="risk-title">단일 파트너 의존도</div>
+    <div class="risk-body">단일 유럽 파트너에 공급망이 집중되면, 파트너 생산 이슈 또는 계약 변경 시 재고 공백이 발생. 대안 소싱 소스를 최소 1개 더 확보하거나, 3~6개월치 안전재고 유지 전략 필요.</div>
+  </div>
+  <div class="risk-card reveal reveal-delay-2">
+    <span class="risk-level-pill risk-low">LOW RISK</span>
+    <div class="risk-title">소비자 인식 변화</div>
+    <div class="risk-body">담배 카테고리 편입 후 "합성니코틴 = 담배" 인식이 강화될 수 있음. 일부 비흡연 소비자 이탈 가능성. 단, 금연 보조 포지셔닝으로 오히려 신규 수요를 창출하는 기회로 전환 가능.</div>
+  </div>
+</div>
+
+<!-- ── CHAPTER 05 ── -->
+<div id="strategy" class="chapter-break section-light" style="border-bottom:1px solid #E0DDD8;">
+  <div class="chapter-break-inner">
+    <div class="chapter-num" style="color:rgba(0,0,0,0.08);">05</div>
+    <div>
+      <div class="chapter-title" style="color:var(--black);">STRATEGY</div>
+      <div style="font-size:13px;color:rgba(0,0,0,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">인디 브랜드의 필살 플레이북</div>
+    </div>
+  </div>
+</div>
+
+<!-- STRATEGY PHOTO -->
+<div class="photo-grid">
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Premium retail" loading="lazy">
+    <div class="photo-cell-overlay"></div>
+    <div class="photo-cell-label">D2C 채널 전략</div>
+  </div>
+  <div class="photo-cell">
+    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Brand building" loading="lazy">
+    <div class="photo-cell-overlay"></div>
+    <div class="photo-cell-label">브랜드 커뮤니티</div>
+  </div>
+</div>
+
+<!-- STRATEGY LIST -->
+<section class="section section-light" style="padding-top:0;padding-bottom:0;">
+  <div style="padding:80px 60px 40px;">
+    <div class="section-tag reveal">05 — Go-to-Market Strategy</div>
+    <h2 class="section-headline reveal reveal-delay-1">
+      대기업과 같은 링에서<br>
+      싸우지 <em class="hl hl-c">마라.</em>
+    </h2>
+    <p class="reveal reveal-delay-2" style="font-size:17px;line-height:1.8;color:#555;max-width:600px;margin-top:24px;">
+      ZYN·VELO와 편의점 진열 공간 싸움을 하면 진다. 인디 브랜드의 필살 전략은 대기업이 절대 못 하는 영역을 선점하는 것이다.
+    </p>
+  </div>
+</section>
+
+<div class="strategy-list" style="background:var(--white);">
+  <div class="strategy-item reveal">
+    <div class="strategy-num-col"><div class="strategy-num">01</div></div>
+    <div class="strategy-content">
+      <span class="strategy-pill" style="background:#EEF2FF;color:var(--blue);">Position</span>
+      <div class="strategy-title">"담배 대체제"가 아닌 "라이프스타일 브랜드"로 포지션하라</div>
+      <div class="strategy-body">ZYN은 PMI가 만든 대기업 브랜드다. 당신은 그 반대편에 있어야 한다. 유럽 공장의 프리미엄 원산지, 합성니코틴의 클린 이미지, 인디 브랜드의 스토리텔링을 결합한 "스몰배치 프리미엄 니코틴 파우치"로 포지션. 가격은 ZYN 대비 10~20% 프리미엄을 유지하고, 타겟은 담배를 끊고 싶은 30대 직장인 + 이미 담배를 안 피우지만 니코틴 경험을 원하는 20대 후반층.</div>
+    </div>
+  </div>
+  <div class="strategy-item reveal reveal-delay-1">
+    <div class="strategy-num-col"><div class="strategy-num">02</div></div>
+    <div class="strategy-content">
+      <span class="strategy-pill" style="background:#FFF0ED;color:var(--coral);">Channel</span>
+      <div class="strategy-title">D2C 먼저, 편의점은 나중에</div>
+      <div class="strategy-body">4월 이후 편의점은 담배소매인 채널이므로 입점은 가능하지만, 진열 경쟁에서 인디 브랜드는 불리하다. D2C(자사몰) + 구독 모델을 주력 채널로 만들어라. 고마진 + 고객 데이터 직접 보유 + 광고 규제 이후에도 CRM으로 재구매 유도 가능. 편의점 입점은 브랜드 인지도가 쌓인 이후 협상력이 생긴 시점에 전략적으로 진행.</div>
+    </div>
+  </div>
+  <div class="strategy-item reveal reveal-delay-2">
+    <div class="strategy-num-col"><div class="strategy-num">03</div></div>
+    <div class="strategy-content">
+      <span class="strategy-pill" style="background:#FFFBE6;color:#B8860B;">Marketing</span>
+      <div class="strategy-title">광고 규제 전에 커뮤니티를 만들어라</div>
+      <div class="strategy-body">D-33. 지금부터 4월 24일까지 33일이 마케팅 황금 타임이다. SNS 광고, 인플루언서 협찬, 유튜브 리뷰를 최대한 태워서 팔로워·뉴스레터 구독자·리뷰어 관계를 구축해야 한다. 규제 이후에는 이 커뮤니티가 광고 대신 일하게 된다. 특히 금연 커뮤니티와의 유기적 관계가 담배 광고 규제를 우회하는 합법적 방법.</div>
+    </div>
+  </div>
+  <div class="strategy-item reveal">
+    <div class="strategy-num-col"><div class="strategy-num">04</div></div>
+    <div class="strategy-content">
+      <span class="strategy-pill" style="background:#F3E8FF;color:#8A44CE;">Pricing</span>
+      <div class="strategy-title">담배세 충격을 흡수하는 가격 구조 설계</div>
+      <div class="strategy-body">담배세 부과 이후 최종 소비자가 시뮬레이션을 즉시 실행. 구독 모델(월 정액)을 통해 세전/세후 혼재 기간을 부드럽게 전환. 구독 고객에게는 "세금 인상 전 가격 고정" 혜택을 주는 락인 전략도 효과적.</div>
+    </div>
+  </div>
+  <div class="strategy-item reveal reveal-delay-1">
+    <div class="strategy-num-col"><div class="strategy-num">05</div></div>
+    <div class="strategy-content">
+      <span class="strategy-pill" style="background:#E8F5E9;color:#2E7D32;">Brand</span>
+      <div class="strategy-title">유럽 원산지 스토리텔링을 자산화하라</div>
+      <div class="strategy-body">스웨덴 스누스의 전통에서 시작한 유럽 제조는 한국 소비자에게 프리미엄 신호다. 제조 국가, 공장 인증, 성분 투명성을 적극적으로 공개하라. 국내 경쟁자 대부분이 제조 소스를 숨기는 상황에서 "우리는 공개한다"는 투명성이 차별화 포인트가 된다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VERDICT -->
+<div class="big-statement" style="background:var(--green-dark);">
+  <div style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--yellow);margin-bottom:20px;opacity:0.8;">Vicky's Verdict · 종합 판단</div>
+  <div class="big-statement-text reveal" style="font-size:clamp(20px,2.5vw,32px);">
+    당신의 전략적 판단은 방향에서 옳다. 유럽 공급망 선점 + 담배 통관 경험 + 중국발 경쟁 차단은 진짜 해자다. 그러나 담배세 마진 충격과 글로벌 빅브랜드의 채널 장악을 과소평가하면 위험하다. 인디 브랜드의 생존법은 단 하나 — <em class="hl hl-y">대기업이 못 들어오는 D2C 커뮤니티</em>와 프리미엄 포지션을 선점하는 것. <em class="hl hl-c">지금 33일이 전부다.</em>
+  </div>
+</div>
+
+<!-- ── CHAPTER 06 ── -->
+<div id="action" class="chapter-break section-dark">
+  <div class="chapter-break-inner">
+    <div class="chapter-num">06</div>
+    <div>
+      <div class="chapter-title">90 DAYS</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;margin-top:8px;">지금 당장 해야 할 것들</div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTION PLAN -->
+<section class="section section-dark" style="padding-bottom:0;">
+  <div class="section-tag reveal" style="color:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.1);">06 — 90-Day Action Plan</div>
+  <h2 class="section-headline reveal reveal-delay-1" style="color:var(--white);">
+    지금부터 90일이<br>
+    <em class="hl hl-y">판가름</em>한다.
+  </h2>
+</section>
+
+<div class="timeline" style="margin:0;padding:0 60px 0;">
+  <div class="timeline-item reveal">
+    <div class="timeline-period-col">
+      <span class="timeline-period-pill" style="background:var(--coral);color:white;">NOW → D-0</span>
+      <div class="timeline-date">지금 ~ 4월 24일</div>
+    </div>
+    <div class="timeline-content">
+      <div class="timeline-title">규제 전 황금 타임 — 광고 최대한 태우기</div>
+      <ul class="timeline-tasks">
+        <li>담배세 시뮬레이션 즉시 실행 — 세후 마진 재계산 (세무사 긴급 상담)</li>
+        <li>SNS 광고 + 인플루언서 리뷰 집중 집행 (Instagram, 유튜브 쇼츠)</li>
+        <li>뉴스레터/이메일 리스트 최소 1,000명 확보 목표</li>
+        <li>D2C 자사몰 구축 + 성인인증 시스템 연동</li>
+        <li>구독 모델 설계 (월 정액, 세금 인상 전 가격 고정 혜택)</li>
+        <li>유럽 파트너와 공급 계약 서면화 + 3개월 안전재고 확보</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-item reveal reveal-delay-1">
+    <div class="timeline-period-col">
+      <span class="timeline-period-pill" style="background:var(--yellow);color:var(--black);">D+1 → D+60</span>
+      <div class="timeline-date">4월 ~ 5월</div>
+    </div>
+    <div class="timeline-content">
+      <div class="timeline-title">규제 편입 이후 — D2C 중심 채널 안착</div>
+      <ul class="timeline-tasks">
+        <li>담배소매인 채널 서류 준비 + 거점 매장 선별 입점</li>
+        <li>커뮤니티 마케팅 전환 — 금연 카페, 담배 커뮤니티 유기적 참여</li>
+        <li>구독 고객 첫 배송 + 재구매율 데이터 수집 시작</li>
+        <li>담배세 포함 가격 정책 고객 커뮤니케이션</li>
+        <li>경쟁사 모니터링 — ZYN·VELO 채널 입점 동향 추적</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="timeline-item reveal reveal-delay-2">
+    <div class="timeline-period-col">
+      <span class="timeline-period-pill" style="background:var(--green);color:var(--black);">D+61 → D+90</span>
+      <div class="timeline-date">6월</div>
+    </div>
+    <div class="timeline-content">
+      <div class="timeline-title">데이터 기반 확장 — 재구매율로 설득하기</div>
+      <ul class="timeline-tasks">
+        <li>재구매율·CAC·LTV 첫 번째 리포트 작성</li>
+        <li>재구매율 30% 이상이면 → 편의점 바이어 미팅 시작 (데이터로 설득)</li>
+        <li>제품 라인 확장 검토 (맛, 강도, 용량 다양화)</li>
+        <li>B2B 채널 탐색 — 시가바, 독립 담배 소매점 등</li>
+        <li>2라운드 마케팅 예산 편성 (커뮤니티 이벤트, 오프라인 시음)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- KPI SECTION -->
+<section class="section section-dark">
+  <div class="section-tag reveal" style="color:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.1);">지금부터 추적해야 할 지표</div>
+  <h3 class="reveal reveal-delay-1" style="color:var(--white);font-size:28px;font-weight:800;margin-bottom:48px;letter-spacing:-1px;">핵심 성과 지표</h3>
+
+  <div style="display:flex;flex-direction:column;gap:16px;" class="reveal reveal-delay-2">
+    <div class="bar-row-wt" data-label="세후 그로스 마진" data-value="95" data-tag="URGENT" data-color="#E8553E"></div>
+    <div class="bar-row-wt" data-label="재구매율 (30%+ 목표)" data-value="85" data-tag="최우선" data-color="#EDD94C"></div>
+    <div class="bar-row-wt" data-label="고객 획득 비용 CAC" data-value="75" data-tag="1순위" data-color="#B5D99C"></div>
+    <div class="bar-row-wt" data-label="LTV / CAC 비율 (3x+)" data-value="70" data-tag="1순위" data-color="#4361EE"></div>
+    <div class="bar-row-wt" data-label="뉴스레터 구독자 수" data-value="55" data-tag="2순위" data-color="#C77DFF"></div>
+  </div>
+</section>
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <div>
+    <div class="closing-headline reveal">
+      THE<br>
+      WINDOW<br>
+      IS <span style="color:var(--yellow);">33</span><br>
+      DAYS.
+    </div>
+    <p class="reveal reveal-delay-1" style="font-size:18px;color:rgba(255,255,255,0.45);max-width:480px;line-height:1.8;margin-top:32px;">
+      유럽 공급망, 담배 통관 경험, 합성니코틴 포지셔닝 — 당신이 가진 패는 실제로 강하다. 이제 남은 건 실행 속도다.
+    </p>
+
+    <div class="closing-pills reveal reveal-delay-2">
+      <div class="closing-pill">유럽 공급망 선점 ✓</div>
+      <div class="closing-pill">담배 통관 경험 ✓</div>
+      <div class="closing-pill">합성니코틴 포지셔닝 ✓</div>
+      <div class="closing-pill">D-33 실행 시작 →</div>
+    </div>
+  </div>
+
+  <div class="closing-footer">
+    <div class="closing-brand">NP Strategy 2026 · Confidential</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.2);text-align:right;line-height:1.6;">
+      Prepared by Vicky · Claude Sonnet 4.6<br>
+      March 2026
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    D2C FIRST &nbsp;·&nbsp; 담배세 시뮬레이션 즉시 &nbsp;·&nbsp; 유럽 파트너 서면 계약 &nbsp;·&nbsp; 33일 마케팅 황금 타임 &nbsp;·&nbsp; 커뮤니티를 광고보다 먼저 &nbsp;·&nbsp; 대기업과 같은 링에서 싸우지 마라 &nbsp;·&nbsp; WIN THE NEW RULES &nbsp;·&nbsp;&nbsp;
+    D2C FIRST &nbsp;·&nbsp; 담배세 시뮬레이션 즉시 &nbsp;·&nbsp; 유럽 파트너 서면 계약 &nbsp;·&nbsp; 33일 마케팅 황금 타임 &nbsp;·&nbsp; 커뮤니티를 광고보다 먼저 &nbsp;·&nbsp; 대기업과 같은 링에서 싸우지 마라 &nbsp;·&nbsp; WIN THE NEW RULES &nbsp;·&nbsp;&nbsp;
+  </div>
+</div>
+
+<script>
+// Scroll Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Bar charts (WeTransfer style)
+function buildBars() {
+  document.querySelectorAll('.bar-row-wt').forEach(el => {
+    const label = el.dataset.label;
+    const value = el.dataset.value;
+    const tag = el.dataset.tag;
+    const color = el.dataset.color;
+    el.innerHTML = `
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+        <span style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);min-width:240px;">${label}</span>
+        <div style="flex:1;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;">
+          <div class="bar-track" style="height:100%;background:${color};width:0;border-radius:2px;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);" data-width="${value}"></div>
+        </div>
+        <span style="font-size:10px;font-weight:800;letter-spacing:2px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.4);white-space:nowrap;">${tag}</span>
+      </div>
+    `;
+  });
+}
+buildBars();
+
+// Bar animation
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-track').forEach(bar => {
+        const w = bar.dataset.width;
+        setTimeout(() => { bar.style.width = w + '%'; }, 200);
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.bar-row-wt').forEach(el => barObserver.observe(el));
+</script>
+</body>
+</html>
