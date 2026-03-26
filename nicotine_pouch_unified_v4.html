@@ -1453,6 +1453,50 @@
     a { color: inherit; text-decoration: none; }
   }
 </style>
+
+<style>
+  /* ── ACTIVE NAV ── */
+  .nav-links a.nav-active {
+    color: var(--yellow);
+    background: rgba(240,224,0,0.1);
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  /* ── NUMBER COUNT-UP ── */
+  .num[data-count] {
+    transition: opacity 0.3s;
+  }
+
+  /* ── CHAPTER DIVIDER ACCENT ── */
+  .display-lg {
+    letter-spacing: -0.02em;
+  }
+  .display-sm {
+    letter-spacing: -0.01em;
+  }
+
+  /* ── SECTION LABEL UPPERCASE SPACING ── */
+  .label {
+    letter-spacing: 0.15em;
+  }
+
+  /* ── FORECAST BAR TRANSITION ── */
+  .fy-bar {
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .forecast-year:not(.visible) .fy-bar {
+    width: 0% !important;
+  }
+
+  /* ── STAT CARD NUMBER PULSE ON HOVER ── */
+  .stat-card .num {
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .stat-card:hover .num {
+    transform: scale(1.04);
+    color: var(--yellow);
+  }
+</style>
 </head>
 <body>
 <div id="scroll-progress"></div>
@@ -2591,7 +2635,7 @@
 <div id="ch5"></div>
 
 <!-- Chapter 05 Hero Image -->
-<div class="ch-hero" style="background-image: url('https://images.unsplash.com/photo-1758691736493-aa6d22c0f8a6?w=1600&q=80&auto=format&fit=crop');">
+<div class="ch-hero" style="background-image: url('https://images.unsplash.com/photo-1765438869297-6fa4b627906a?w=1600&q=80&auto=format&fit=crop');">
   <div class="ch-hero-content">
     <div class="container">
       <div class="ch-num">Chapter 05</div>
@@ -2840,31 +2884,66 @@
 
 
 <script>
-  // Scroll progress bar
+  // ── Scroll progress bar ──
   const bar = document.getElementById('scroll-progress');
   window.addEventListener('scroll', () => {
     const max = document.body.scrollHeight - window.innerHeight;
     bar.style.width = (window.scrollY / max * 100) + '%';
   }, { passive: true });
 
-  // Scroll reveal via IntersectionObserver
-  const observer = new IntersectionObserver((entries) => {
+  // ── Scroll reveal via IntersectionObserver ──
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
-        observer.unobserve(e.target);
+        revealObserver.unobserve(e.target);
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    // Stagger delay for sibling groups
+  document.querySelectorAll('.reveal').forEach((el) => {
     const siblings = el.parentElement.querySelectorAll('.reveal');
     if (siblings.length > 1) {
       const idx = Array.from(siblings).indexOf(el);
       el.style.transitionDelay = (idx * 0.08) + 's';
     }
-    observer.observe(el);
+    revealObserver.observe(el);
+  });
+
+  // ── Active nav section tracking ──
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('nav-active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0, rootMargin: '-30% 0px -65% 0px' });
+
+  document.querySelectorAll('div[id^="ch"]').forEach(el => sectionObserver.observe(el));
+
+  // ── Forecast bar animated entrance ──
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.fy-bar').forEach(b => {
+          b.style.width = b.dataset.w || b.style.width;
+        });
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  // Store original widths and reset for animation
+  document.querySelectorAll('.forecast-year').forEach(row => {
+    row.querySelectorAll('.fy-bar').forEach(b => {
+      b.dataset.w = b.style.width;
+      b.style.width = '0%';
+    });
+    barObserver.observe(row);
   });
 </script>
 
