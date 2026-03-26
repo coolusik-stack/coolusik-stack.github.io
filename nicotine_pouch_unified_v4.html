@@ -451,12 +451,13 @@
     color: var(--yellow);
     flex-shrink: 0;
   }
-  .fy-bar-wrap { flex: 1; position: relative; height: 40px; }
+  .fy-bar-wrap { flex: 1; position: relative; height: 40px; overflow: hidden; }
   .fy-bar-bg {
     position: absolute;
     inset: 0;
-    background: var(--mid-grey);
+    background: #2f2f2f;
     border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.04);
   }
   .fy-bar {
     position: absolute;
@@ -464,6 +465,14 @@
     border-radius: 4px;
     overflow: hidden;
     min-width: 0;
+    min-width: 14px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .fy-bar.yellow {
+    background: linear-gradient(90deg, #e1c600 0%, var(--yellow) 100%);
+  }
+  .fy-bar.lime {
+    background: linear-gradient(90deg, #b0d900 0%, var(--lime) 100%);
   }
   .fy-val {
     width: 120px;
