@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한국 니코틴 파우치 시장 — Vicky & Momo 통합 분석 2026 v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --black: #0a0a0a;
@@ -23,7 +26,7 @@
   body {
     background: var(--black);
     color: var(--white);
-    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
@@ -1404,8 +1407,55 @@
     .channel-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>
+
+<style>
+  /* ── SCROLL PROGRESS BAR ── */
+  #scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--yellow), var(--lime));
+    z-index: 2000;
+    transition: width 0.1s linear;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── CARD HOVER LIFT ── */
+  .card, .stat-card, .channel-card, .fy-row {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover, .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    #scroll-progress, .ticker-wrap, .nav { display: none !important; }
+    body { background: #fff !important; color: #000 !important; }
+    .hero-section, .ch-hero, .breather-panel { background-attachment: scroll !important; }
+    section { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
 </head>
 <body>
+<div id="scroll-progress"></div>
 
 <!-- TICKER -->
 <div class="ticker-wrap">
@@ -1538,12 +1588,12 @@
         <div class="unit">2024 시장 규모</div>
         <div class="desc">Grand View Research 기준</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">$22.8B</div>
         <div class="unit">2030 예상</div>
         <div class="desc">6년 내 5.77배 성장 시나리오</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">34%</div>
         <div class="unit">CAGR 2024–2030</div>
         <div class="desc">글로벌 담배 카테고리 중 가장 빠른 성장률</div>
@@ -1655,22 +1705,22 @@
     <!-- Growth Drivers -->
     <h3 class="display-sm" style="margin-top: 56px; margin-bottom: 20px;">4대 성장 동력</h3>
     <div class="card-grid">
-      <div class="card yellow-border yellow-bg">
+      <div class="card reveal yellow-border yellow-bg">
         <span class="card-icon">🚫</span>
         <div class="card-title">규제 회피 수요</div>
         <div class="card-text">실내·금연구역 흡연 불가 확대로 "냄새 없고 연기 없는" 포맷 수요 급증. 특히 사무직·피트니스 이용자 진입.</div>
       </div>
-      <div class="card yellow-border yellow-bg">
+      <div class="card reveal yellow-border yellow-bg">
         <span class="card-icon">📱</span>
         <div class="card-title">Z세대 니코틴 채널 다변화</div>
         <div class="card-text">궐련 거부감 높은 MZ세대가 새로운 포맷 실험에 적극적. 소셜미디어 통한 확산 속도 기존 카테고리 대비 빠름.</div>
       </div>
-      <div class="card lime-border lime-bg-card">
+      <div class="card reveal lime-border lime-bg-card">
         <span class="card-icon">🏭</span>
         <div class="card-title">Big Tobacco R&D 집중</div>
         <div class="card-text">PMI, BAT, Altria, JTI 4대 메이저가 Modern Oral에 수십억 달러 투자. 스웨덴 스타트업 인수, 공장 증설 중.</div>
       </div>
-      <div class="card lime-border lime-bg-card">
+      <div class="card reveal lime-border lime-bg-card">
         <span class="card-icon">⚗️</span>
         <div class="card-title">합성 니코틴 회색지대</div>
         <div class="card-text">담뱃잎 유래 아닌 합성 니코틴은 기존 담배법 적용 불가. 한국 포함 다수 국가에서 규제 공백 활용한 사전 시장 선점 시도.</div>
@@ -1681,7 +1731,7 @@
     <h3 class="display-sm" style="margin-top: 56px; margin-bottom: 12px;">시장 규모 전망 ($B)</h3>
     <p class="label" style="margin-bottom: 28px;">Global Market Size Forecast — Grand View Research 기준</p>
     <div class="forecast-section">
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2024</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1689,7 +1739,7 @@
         </div>
         <div class="fy-val">$3.95B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2025</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1697,7 +1747,7 @@
         </div>
         <div class="fy-val">~$5.3B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2026</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1705,7 +1755,7 @@
         </div>
         <div class="fy-val">~$7.1B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2027</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1713,7 +1763,7 @@
         </div>
         <div class="fy-val">~$9.5B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2028</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1721,7 +1771,7 @@
         </div>
         <div class="fy-val">~$12.7B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2029</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1729,7 +1779,7 @@
         </div>
         <div class="fy-val">~$17.1B</div>
       </div>
-      <div class="forecast-year">
+      <div class="forecast-year reveal">
         <div class="fy-label">2030E</div>
         <div class="fy-bar-wrap">
           <div class="fy-bar-bg"></div>
@@ -1812,12 +1862,12 @@
         <div class="unit">ZYN 미국 판매 캔 (2024)</div>
         <div class="desc">PMI · FDA 승인 Jan 2025</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">$1.88B</div>
         <div class="unit">ZYN 매출 (2024)</div>
         <div class="desc">미국 시장 점유율 74%</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">8.3B</div>
         <div class="unit">VELO 파우치 (BAT, 2024)</div>
         <div class="desc">+46.6% YoY 매출 성장</div>
@@ -2063,12 +2113,12 @@
         <div class="unit">한국 HTP 시장 규모</div>
         <div class="desc">전체 담배 시장의 18.4% · 세계 4위</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">+280%</div>
         <div class="unit">니코틴 파우치 직수입 YoY</div>
         <div class="desc">아직 소규모지만 방향성은 명확</div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card reveal">
         <div class="num yellow">$30–50M</div>
         <div class="unit">현재 추정 시장 규모</div>
         <div class="desc">글로벌 대비 0.75–1.26%에 불과</div>
@@ -2787,6 +2837,36 @@
     </div>
   </div>
 </footer>
+
+
+<script>
+  // Scroll progress bar
+  const bar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const max = document.body.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / max * 100) + '%';
+  }, { passive: true });
+
+  // Scroll reveal via IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    // Stagger delay for sibling groups
+    const siblings = el.parentElement.querySelectorAll('.reveal');
+    if (siblings.length > 1) {
+      const idx = Array.from(siblings).indexOf(el);
+      el.style.transitionDelay = (idx * 0.08) + 's';
+    }
+    observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
